@@ -26,6 +26,9 @@ set mouse=a
 " Buffers, tabs and windows
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
 
+" Delete trailing whitespaces
+autocmd BufWritePre * :%s/\s\+$//e
+
 set splitright
 set splitbelow
 
