@@ -1,0 +1,16 @@
+# Fork Tool
+alias ft=~/.knife/ft.sh
+
+# Git aliases
+alias gst='git status -sb'
+alias gia='git add'
+alias gci='git commit'
+alias gpo='git push origin'
+alias gpom='git push origin master'
+alias gpum='git pull origin master'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+
+# Folder aliases
+alias lsa='ls -alF'
+alias lnf='ls |wc -l'
