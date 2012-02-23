@@ -26,3 +26,5 @@
 #
 
 [ -n "$PS1" ] && source ~/.bash_profile;
+
+# Your own modifications
