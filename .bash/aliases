@@ -1,6 +1,9 @@
 # Fork Tool
 alias ft=~/.knife/ft.sh
 
+# PHPUnit aliases
+alias phpunit='clear && phpunit --colors'
+
 # Git aliases
 alias gst='git status -sb'
 alias gia='git add'
@@ -14,3 +17,6 @@ alias gcob='git checkout -b'
 # Folder aliases
 alias lsa='ls -alF'
 alias lnf='ls |wc -l'
+
+# Easily resource all your files
+alias resource='source ~/.bashrc'
