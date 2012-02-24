@@ -72,6 +72,8 @@ set noexpandtab
 
 " Auto-completion
 set wildmode=longest,list,full
+
+" Show a menu at the bottom of the vim window.
 set wildmenu
 
 " Folding
