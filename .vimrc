@@ -26,9 +26,7 @@ set mouse=a
 " Buffers, tabs and windows
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
 
-" Delete trailing whitespaces
-autocmd BufWritePre * :%s/\s\+$//e
-
+" Splitview options
 set splitright
 set splitbelow
 
@@ -40,6 +38,9 @@ set undolevels=1024
 
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+
+" Delete trailing whitespaces
+autocmd BufWritePre * :%s/\s\+$//e
 
 " Syntax highlighting
 color zenburn
@@ -59,12 +60,6 @@ set softtabstop=4
 set tabstop=4
 set noexpandtab
 
-" Open resource
-
-
-" Ruby has whitespace other settings
-autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
-
 " Auto-completion
 set wildmode=longest,list,full
 set wildmenu
@@ -79,9 +74,6 @@ highlight Error ctermfg=red
 autocmd BufWinEnter * match Error /^\[\(fatal\|error\|err\)\].*/
 highlight Info ctermfg=green
 autocmd BufWinEnter * match Info /^\[\(info\|notice\)\].*/
-
-" Do not pollute the working directory with swap and other files
-"set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 " From http://www.reddit.com/r/vim/comments/gexi6/a_smarter_statusline_code_in_comments/
 function! MyStatusLine(mode)
@@ -190,18 +182,6 @@ set numberwidth=5
 
 " Show information concerning the current position in the document.
 set ruler
-
-"syn on
-"set history=1000
-"set wildmenu
-"set ignorecase
-"set smartcase
-"set title
-"set backspace=indent,eol,start
-"set hlsearch
-"set incsearch
-"set colorcolumn=100
-"colorscheme desert
 
 if has("gui_running")
 	set guioptions=egmrt
