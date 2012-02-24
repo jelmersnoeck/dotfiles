@@ -15,7 +15,7 @@ alias gco='git checkout'
 alias gcob='git checkout -b'
 
 # Folder aliases
-alias lsa='ls -alF'
+alias lsa='ls -alG'
 alias lnf='ls |wc -l'
 
 # Easily resource all your files
