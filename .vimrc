@@ -53,7 +53,7 @@ nmap <c-n> ]]
 nmap <c-p> [[
 
 " Syntax highlighting
-color zenburn
+color symfony
 syntax on
 syntax sync fromstart
 set synmaxcol=16384
