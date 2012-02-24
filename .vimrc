@@ -33,8 +33,8 @@ set splitbelow
 set tabpagemax=1024
 
 " History
-set history=1024
-set undolevels=1024
+set history=50
+set undolevels=50
 
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
