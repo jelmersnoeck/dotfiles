@@ -1,3 +1,6 @@
+# Set paths.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
 # load custom configuration
 for file in ~/{.bash_aliases,.bash_commands}; do
 	[ -r "$file" ] && source "$file";
