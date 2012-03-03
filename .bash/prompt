@@ -4,4 +4,4 @@ type -t git > /dev/null \
 	|| __prompt_vcs_string='';
 
 # set our prompt
-export PS1="\${FG_GREEN}[\\u@\\h]${FG_YELLOW}[\\t]${FG_CYAN} \\w${FG_RED}$__prompt_vcs_string\\e[m\\n\\$ ";
+export PS1="[\\t]${FG_YELLOW}[\\u@\\h]${FG_CYAN} \\w${FG_RED}$__prompt_vcs_string\\e[m\\n\\$ ";
