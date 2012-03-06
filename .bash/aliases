@@ -18,5 +18,8 @@ alias gcob='git checkout -b'
 alias lsa='ls -alG'
 alias lnf='ls |wc -l'
 
+# Ctags
+alias bctags='ctags -h ".php" -R .'
+
 # Easily resource all your files
 alias resource='source ~/.bashrc'
