@@ -33,8 +33,8 @@ set splitbelow
 set tabpagemax=1024
 
 " History
-set history=50
-set undolevels=50
+set history=150
+set undolevels=150
 
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
@@ -60,6 +60,8 @@ set synmaxcol=16384
 
 " Indentation settings
 set autoindent
+set smartindent
+set noexpandtab
 
 " Do not extend the visual selection beyond the last character.
 vnoremap $ $h
@@ -68,16 +70,23 @@ vnoremap $ $h
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set noexpandtab
+
+" Code folding
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=5
+
+" No backup files
+set noswapfile
+set nobackup
+set nowb
 
 " Auto-completion
 set wildmode=longest,list,full
 
 " Show a menu at the bottom of the vim window.
 set wildmenu
-
-" Folding
-set foldmethod=marker
 
 " Show line numbers and make them 5 characters wide
 map <F6> :set number!<CR>
