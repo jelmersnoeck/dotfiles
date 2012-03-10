@@ -23,6 +23,9 @@ set list
 set listchars=tab:→\ ,extends:»,precedes:«,trail:▒,nbsp:·
 set mouse=a
 
+" Enable bash commands in vim.
+set shellcmdflag=-ic
+
 " Buffers, tabs and windows
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
 
@@ -38,6 +41,10 @@ set undolevels=50
 
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+
+" We like 80 characters. To maintain this we use a highlight if we have more than 80
+set cc=100
+hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 
 " Delete trailing whitespaces on saving a file
 autocmd BufWritePre * :%s/\s\+$//e
