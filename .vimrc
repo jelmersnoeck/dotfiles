@@ -1,8 +1,5 @@
 " THIS IS AN UNHOLY MIX OF STUFF, THINGS AND WOTSITS. USE AT THINE PROPER PERIL.
 
-" Use Vim defaults instead of 100% vi compatibility
-set nocompatible
-
 " Disable mode lines to prevent unwanted code execution (CVE-2007-2438)
 set modelines=0
 
