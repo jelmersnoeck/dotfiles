@@ -62,7 +62,7 @@ nmap <c-n> ]]
 nmap <c-p> [[
 
 " Syntax highlighting
-color railscasts
+color twilight256
 syntax on
 syntax sync fromstart
 set synmaxcol=16384
