@@ -60,7 +60,7 @@ nmap <c-n> ]]
 nmap <c-p> [[
 
 " Syntax highlighting
-color symfony
+color railscasts
 syntax on
 syntax sync fromstart
 set synmaxcol=16384
