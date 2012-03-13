@@ -23,6 +23,8 @@ set list
 set listchars=tab:→\ ,extends:»,precedes:«,trail:▒,nbsp:·
 set mouse=a
 
+ab sdmp Spoon::dump(
+
 " Enable bash commands in vim.
 set shellcmdflag=-ic
 
