@@ -6,6 +6,9 @@ set nocompatible
 " Disable mode lines to prevent unwanted code execution (CVE-2007-2438)
 set modelines=0
 
+" Autocompletion of some magic
+filetype plugin indent on
+
 " Searching
 set ignorecase
 set smartcase
@@ -23,7 +26,8 @@ set list
 set listchars=tab:→\ ,extends:»,precedes:«,trail:▒,nbsp:·
 set mouse=a
 
-ab sdmp Spoon::dump(
+" Abbreviations
+ab sd Spoon::dump();<Left><Left>
 
 " Enable bash commands in vim.
 set shellcmdflag=-ic
