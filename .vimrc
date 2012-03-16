@@ -42,8 +42,8 @@ set splitbelow
 set tabpagemax=1024
 
 " History
-set history=150
-set undolevels=150
+set history=1024
+set undolevels=1024
 
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
@@ -104,6 +104,9 @@ set wildmenu
 " Show line numbers and make them 5 characters wide
 map <F6> :set number!<CR>
 set numberwidth=5
+
+" Custom status line
+set statusline=%<%f\ %=line\ %l\ of\ %L\ %15.15(col\ %c%V%)\
 
 " Show information concerning the current position in the document.
 set ruler
