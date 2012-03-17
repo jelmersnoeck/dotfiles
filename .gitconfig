@@ -23,7 +23,7 @@
 
 	# Show a concise status of the working directory, along with the branch
 	# and the number of commits behind and/or ahead.
-	s = status --short --branch
+	st = status --short --branch
 
 	# Quickly push to the most common destination.
 	pom = push origin master
@@ -36,6 +36,9 @@
 
 	# Show the staged changes.
 	dc = diff --cached
+
+	# Commit
+	ci = commit
 
 	# Like "git show myfile", but uses the last commit that changed "myfile".
 	sl = log -n 1 -p

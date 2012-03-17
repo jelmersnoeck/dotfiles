@@ -9,17 +9,6 @@ alias mysql='mysql5'
 # PHPUnit aliases
 alias phpunit='clear && phpunit --colors'
 
-# Git aliases
-alias gst='git status -sb'
-alias gia='git add'
-alias gci='git commit'
-alias gpo='git push origin'
-alias gpom='git push origin master'
-alias gpum='git pull origin master'
-alias gco='git checkout'
-alias gcob='git checkout -b'
-alias gaa='git add --all'
-
 # Folder aliases
 alias lsa='ls -alG'
 alias lnf='ls |wc -l'
