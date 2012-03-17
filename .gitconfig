@@ -56,7 +56,8 @@
 	# now reset my "password" file. With "git go pass<Tab><Enter>", I would
 	# simply have created a new branch called "password". (I would be forced
 	# to use "--" to separate paths from banch names, which is a Good Thing™.)
-	co = checkout -B
+	cob = checkout -B
+	co = checkout
 
 	# Make life easier, we only need git aa to add/remove git files
 	aa = add --all
