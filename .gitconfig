@@ -71,7 +71,7 @@
 
 
 [core]
-	excludefiles = /Users/jelmersnoeck/.gitignore
+	excludesfile = /Users/jelmersnoeck/.gitignore
 	autocrlf = input
 	safecrlf = true
 
