@@ -5,7 +5,7 @@ commonFiles=();
 for sourceFile in .*; do
 
 	# Exclude some files.
-	if [ "$sourceFile" == "dotfiles-002.png" || "$sourceFile" == "dotfiles-001.png" || "$sourceFile" == "install.sh" ] || [ "$sourceFile" == "README.md" ] || [ "$sourceFile" == "." ] || [ "$sourceFile" == ".." ] || [ "$sourceFile" == ".git" ]; then
+	if [[ "$sourceFile" == "dotfiles-002.png" || "$sourceFile" == "dotfiles-001.png" || "$sourceFile" == "install.sh" ]] || [[ "$sourceFile" == "README.md" ]] || [[ "$sourceFile" == "." ]] || [[ "$sourceFile" == ".." ]] || [[ "$sourceFile" == ".git" ]]; then
 		continue;
 	fi;
 
@@ -35,7 +35,7 @@ if [ $conflictCount -gt 0 ]; then
 
 	# Create a suffix with a timestamp so the user can see which
 	# files and when they've been backupped.
-	backupSuffix=".jsDotfiles-$(date +'%Y%m%d-%H%M%S')";
+	backupSuffix=".jsVimconfig-$(date +'%Y%m%d-%H%M%S')";
 
 	# Print some information about the replacement.
 	tput setaf 3;
@@ -79,7 +79,7 @@ done;
 for sourceFile in .*; do
 
 	# Exclude some files.
-	if [ "$sourceFile" == "dotfiles-001.png" || "$sourceFile" == "dotfiles-002.png" || "$sourceFile" == "install.sh" ] || [ "$sourceFile" == "README.md" ] || [ "$sourceFile" == "." ] || [ "$sourceFile" == ".." ] || [ "$sourceFile" == ".git" ]; then
+	if [[ "$sourceFile" == "dotfiles-002.png" || "$sourceFile" == "dotfiles-001.png" || "$sourceFile" == "install.sh" ]] || [[ "$sourceFile" == "README.md" ]] || [[ "$sourceFile" == "." ]] || [[ "$sourceFile" == ".." ]] || [[ "$sourceFile" == ".git" ]]; then
 		continue;
 	fi;
 
