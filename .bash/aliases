@@ -18,6 +18,7 @@ alias gpom='git push origin master'
 alias gpum='git pull origin master'
 alias gco='git checkout'
 alias gcob='git checkout -b'
+alias gaa='git add --all'
 
 # Folder aliases
 alias lsa='ls -alG'
