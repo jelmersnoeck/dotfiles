@@ -28,6 +28,9 @@
 	# Quickly push to the most common destination.
 	pom = push origin master
 
+	# Quickly push to the origin
+	po = push origin
+
 	# I know "pum" could just as well stand for "PUsh" instead of "PUll", but
 	# I am so used to "git pom" that "git pum" feels like a natural
 	# counterpart. I always try to rebase to prevent unnecessary merge
