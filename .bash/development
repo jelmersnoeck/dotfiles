@@ -50,7 +50,7 @@ init-project()
 	mkdir $projectName
 	cd $projectName
 
-	if [ $existingProject ]; then
+	if [[ $existingProject == 'true' ]]; then
 
 		# This is an existing project. This is pretty basic since
 		# someone already has set up this project. All we need to
@@ -69,7 +69,7 @@ init-project()
 		# to base it upon.
 
 		# Fetch the latest Fork CMS version.
-		git clone git@github.com:forkcms/forkcms.git
+		git clone git@github.com:forkcms/forkcms.git .
 
 		# Reroute the origin remote to our own github.
 		git remote set-url origin $GITHUB_SERVER/$projectName.git
