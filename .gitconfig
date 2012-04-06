@@ -14,13 +14,6 @@
 	# instance.
 	git = !git
 
-	# Quickly view the latest commits in a multicolour oneliner format that
-	# highlights the parts I care about most: SHA, description and branch.
-	l = log --pretty=concise -n 20
-
-	# Like "git l", but show all and draw the history graph, too.
-	ll = log --pretty=concise --graph
-
 	# Show a concise status of the working directory, along with the branch
 	# and the number of commits behind and/or ahead.
 	st = status --short --branch
@@ -30,6 +23,9 @@
 
 	# Quickly push to the origin
 	po = push origin
+
+	# Quickly pull from the origin
+	pu = pull origin
 
 	# I know "pum" could just as well stand for "PUsh" instead of "PUll", but
 	# I am so used to "git pom" that "git pum" feels like a natural
@@ -66,11 +62,13 @@
 	aa = add --all
 
 	# Show pretty log
-	ra = !git r --all
+	ll = !git pgl --all
 
-	r = !git l -20
+	# Show only 20 git log items
+	l = !git pgl -20
 
-	l = "!source ~/.githelpers && pretty_git_log"
+	# Show a git log with detailed log information.
+	pgl = "!source ~/.githelpers && pretty_git_log"
 
 
 [core]
