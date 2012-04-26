@@ -5,6 +5,13 @@ defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 defaults write com.apple.menuextra.battery ShowPercent -string "NO"
 defaults write com.apple.menuextra.battery ShowTime -string "YES"
 
+# Set a blazingly fast keyboard repeat rate
+defaults write -g KeyRepeat -int 2
+defaults write -g InitialKeyRepeat -int 25
+
+# Disable auto-correct
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
