@@ -7,7 +7,6 @@ alias mysql='mysql5'
 alias phpunit='clear && phpunit --colors'
 
 # Folder aliases
-alias lsa='ls -alG'
 alias lnf='ls |wc -l'
 
 # Ctags
@@ -16,3 +15,15 @@ alias bctags='ctags -R --PHP-kinds=+cf .'
 
 # Easily resource all your files
 alias resource='source ~/.bashrc'
+
+# Specific OS aliases
+if [[ $OS == 'Darwin' ]]
+then
+	alias ls='ls -G'
+	alias lsa='ls -alG'
+fi
+
+if [[ $OS == 'Linux' ]]
+then
+	alias lsa='ls -hal --color=tty'
+fi
