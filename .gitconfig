@@ -37,7 +37,7 @@
 	dc = diff --cached
 
 	# Commit
-	ci = commit
+	ci = commit -s
 
 	# Like "git show myfile", but uses the last commit that changed "myfile".
 	sl = log -n 1 -p
