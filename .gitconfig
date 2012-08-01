@@ -2,6 +2,14 @@
 	name = Jelmer Snoeck
 	email = jelmer.snoeck@gmail.com
 
+[core]
+    repositoryformatversion = 0
+    filemode = true
+    bare = false
+    logallrefupdates = true
+    ignorecase = true
+    excludesfile = ~/.gitignore
+
 [github]
 	user = jelmersnoeck
 
@@ -69,12 +77,6 @@
 
 	# Show a git log with detailed log information.
 	pgl = "!source ~/.githelpers && pretty_git_log"
-
-
-[core]
-	excludesfile = /Users/jelmersnoeck/.gitignore
-	autocrlf = true
-	safecrlf = false
 
 [color]
 	ui = true
