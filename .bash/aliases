@@ -4,6 +4,9 @@ alias phpunit='clear && phpunit --colors'
 # Folder aliases
 alias lnf='ls |wc -l'
 
+# Tmux aliasing
+alias dev='~/.bin/./tmux_open_project.sh'
+
 # Git
 alias g='git'
 
