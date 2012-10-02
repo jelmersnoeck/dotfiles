@@ -3,12 +3,12 @@
 	email = jelmer.snoeck@gmail.com
 
 [core]
-    repositoryformatversion = 0
-    filemode = true
-    bare = false
-    logallrefupdates = true
-    ignorecase = true
-    excludesfile = ~/.gitignore
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	excludesfile = ~/.gitignore
 
 [github]
 	user = jelmersnoeck
