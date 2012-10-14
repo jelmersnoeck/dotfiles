@@ -247,6 +247,7 @@ configure-vhost()
 	echo -e "\tServerAdmin jelmer.snoeck@siphoc.com" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
 	echo -e "\tDocumentRoot \"$projectPath\"" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
 	echo -e "\tServerName $projectName.dev" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
+	echo -e "\tServerAlias $projectName.*.xip.io" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
 	echo -e "\tErrorLog \"/private/var/log/apache2/$projectName-error_log\"" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
 	echo -e "\tCustomLog \"/private/var/log/apache2/$projectName-access_log\" common" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
 	echo -e "</virtualHost>" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
