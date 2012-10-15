@@ -13,7 +13,7 @@ done;
 unset file;
 
 # load the dotfile files.
-for file in ~/.bash/{development,aliases,shell,commands,prompt,extra}; do
+for file in ~/.bash/{development,aliases,shell,commands,prompt,extra.git-completion.bash}; do
 	[ -r "$file" ] && source "$file";
 done;
 unset file;
