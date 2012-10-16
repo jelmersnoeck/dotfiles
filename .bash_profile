@@ -17,3 +17,5 @@ for file in ~/.bash/{development,aliases,shell,commands,prompt,extra.git-complet
 	[ -r "$file" ] && source "$file";
 done;
 unset file;
+
+source ~/.bash/.git-completion.bash
