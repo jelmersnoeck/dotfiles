@@ -19,3 +19,6 @@ done;
 unset file;
 
 source ~/.bash/.git-completion.bash
+
+# TERM Schema
+export TERM='xterm'
