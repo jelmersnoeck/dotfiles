@@ -7,9 +7,6 @@ alias lnf='ls |wc -l'
 # Tmux aliasing
 alias dev='~/.bin/./tmux_open_project.sh'
 
-# Git
-alias g='git'
-
 # Ctags
 alias bctags='ctags -h ".php" -R .'
 #alias bctags='ctags --PHP-kinds=+cf .'
