@@ -1,5 +1,5 @@
 # Set paths.
-export PATH=/usr/local/mysql/bin:/usr/local/mysql-5.5.25-osx10.6-x86_64/bin:/usr/local/bin:/opt/local/sbin:$PATH
+export PATH=/usr/local/bin:/usr/local/mysql/bin::/opt/local/sbin:$PATH
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.knife:$PATH"
 
