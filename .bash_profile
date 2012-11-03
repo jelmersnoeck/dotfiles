@@ -13,7 +13,7 @@ done;
 unset file;
 
 # load the dotfile files.
-for file in ~/.bash/{development,aliases,shell,commands,prompt,extra.git-completion.bash}; do
+for file in ~/.bash/{development,aliases,shell,commands,prompt,extra.git-completion.bash,symfony2-autocomplete.bash}; do
 	[ -r "$file" ] && source "$file";
 done;
 unset file;
