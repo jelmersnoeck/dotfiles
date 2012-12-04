@@ -1,7 +1,9 @@
 # Set paths.
 export PATH=/usr/local/bin:/usr/local/mysql/bin::/opt/local/sbin:$PATH
 export PATH="$HOME/.bin:$PATH"
+export PATH=$PATH:/usr/local/sbin
 export PATH="$HOME/.knife:$PATH"
+export PATH=/usr/local/share/npm/bin:$PATH
 
 # Set the OS
 OS=`uname -s`
