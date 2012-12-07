@@ -55,10 +55,7 @@ function open_tmux_session()
 	# database window
 	tmux new-window -n database -t $project
 	tmux send-keys -t $project:2 "cd $path/$project" C-m
-	tmux send-keys -t $project:2 "./tools/dbshell" C-m
-	tmux split-window -v -p 15 -t database
-	tmux send-keys -t $project:2 "php -a" C-m
-	tmux select-pane -t $project:2 -U
+	tmux send-keys -t $project:2 "./dbshell" C-m
 	# shell window
 	tmux new-window -n shell -t $project
 	tmux send-keys -t $project:3 "cd $path/$project" C-m
