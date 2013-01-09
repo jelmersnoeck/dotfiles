@@ -2,4 +2,6 @@ composer.phar
 tags
 .DS_STORE
 .netrwhist
+.netrwhist~
 *.php~
+*.twig~
