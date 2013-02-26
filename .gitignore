@@ -6,3 +6,4 @@ tags
 *.php~
 *.twig~
 .netrwhisz~
+.vagrant
