@@ -7,3 +7,4 @@ tags
 *.twig~
 .netrwhisz~
 .vagrant
+*.pyc
