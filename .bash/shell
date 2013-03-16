@@ -46,19 +46,19 @@ export HISTTIMEFORMAT=$'\e[1;30m%Y/%m/%d %H:%M:%S\e[0m  ';
 # use "tput setaf 1" etc., so maybe I will change it back some day.
 let i=0;
 for color in BLACK RED GREEN YELLOW BLUE MAGENTA CYAN WHITE '' DEFAULT; do
-	if [ -n "$color" ]; then
-		printf -v "FG_$color" $'\e[%dm' $((30 + $i));
-		printf -v "BG_$color" $'\e[%dm' $((40 + $i));
-	fi;
-	let i++;
+    if [ -n "$color" ]; then
+        printf -v "FG_$color" $'\e[%dm' $((30 + $i));
+        printf -v "BG_$color" $'\e[%dm' $((40 + $i));
+    fi;
+    let i++;
 done;
 let i=0;
 for style in RESET BOLD '' '' UNDERLINE BLINK '' REVERSE HIDDEN; do
-	if [ -n "$style" ]; then
-		printf -v "FONT_$style" $'\e[%dm' $i;
-		[ "$style" != 'RESET' ] && printf -v "FONT_NOT_$style" $'\e[%dm' $(($i + 20));
-	fi;
-	let i++;
+    if [ -n "$style" ]; then
+        printf -v "FONT_$style" $'\e[%dm' $i;
+        [ "$style" != 'RESET' ] && printf -v "FONT_NOT_$style" $'\e[%dm' $(($i + 20));
+    fi;
+    let i++;
 done;
 unset i color style;
 # "Not bold" is not \e[21m, but \e[22m. ("2" means "faint" on some terminals.)
