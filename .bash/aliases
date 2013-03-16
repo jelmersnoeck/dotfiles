@@ -1,18 +1,8 @@
-# Folder aliases
-alias lnf='ls |wc -l'
-
 # Tmux aliasing
 alias dev='~/.bin/tmux_open_project.sh'
 
-# Symfony 2 coding standards
-alias phpcsymfony='phpcs -v --extensions=php --standard=PSR1 --ignore=*/tests/*'
-
-# JavaScript Command Line
-alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc'
-
 # Ctags
 alias bctags='ctags -h ".php" -R .'
-#alias bctags='ctags --PHP-kinds=+cf .'
 
 # Easily resource all your files
 alias resource='source ~/.bashrc'
