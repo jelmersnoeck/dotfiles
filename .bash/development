@@ -1,259 +1,50 @@
 #!/bin/bash
 
-# This is a script that sets up your projects quite quickly. To use it, you have to
-# add a export GITHUB_SERVER='<yourgithubserver>:organisation' rule to one of your bash
-# files. I recommend you do this in .bash_commands (this will be autoloaded).
-#
-# The script will guide you trough the steps with readline input. You can set up an existing
-# project, this means  you'll create a new directory, clone the data from your github server
-# and set up a vhost. You can also initiate a new project. This will create a new directory,
-# clone ForkCMS into it, create the staging and production branch, create your vhosts and
-# additionaly, it will set up your staging environment with the staging branch.
-init-project()
-{
-	projectName=$1
-
-	# If no project name is given, ask for one.
-	if [ "$projectName" == "" ]; then
-		tput setaf 3
-		read -p "Specify a project name: "
-		tput sgr0
-		projectName=$REPLY
-	fi
-
-	# See if we need to create a new project or just initiate an existing project
-	tput setaf 3
-	read -p "Is this an existing project? (yes|no) "
-	tput sgr0
-	existingProject=false
-
-	# Validate our input so we know what to do next.
-	case "$(tr '[:upper:]' '[:lower:]' <<< "$REPLY")" in
-		'yes'|'y')
-			# this is an existing project
-			existingProject=true
-			;;
-
-		'no'|'n')
-			# This is not an existing project, we need to create a new one.
-			;;
-
-		*)
-			# Undefined answer, abort.
-			tput setaf 1
-			echo "Invalid answer. Aborting."
-			tput sgr0
-			exit 1;
-	esac;
-
-	# Create the project directories.
-	mkdir $projectName
-	cd $projectName
-
-	if [[ $existingProject == 'true' ]]; then
-
-		# This is an existing project. This is pretty basic since
-		# someone already has set up this project. All we need to
-		# do is copy their work.
-
-		# Get the project from github.
-		git clone $GITHUB_SERVER/$projectName.git .
-
-		# Track the remote staging and production branch
-		git branch --track staging origin/staging
-		git branch --track production origin/production
-
-	else
-
-		# Not an existing project. Create a new one and get the latest Fork
-		# to base it upon.
-
-		# Fetch the latest Fork CMS version.
-		git clone git@github.com:forkcms/forkcms.git .
-
-		# Reroute the origin remote to our own github.
-		git remote set-url origin $GITHUB_SERVER/$projectName.git
-
-		# Push and track our master.
-		git push -u origin master
-
-		# Set up our staging and production branches.
-		git branch staging
-		git push origin staging
-
-		git branch production
-		git push origin production
-
-		# Do some magic stuff here with the globals, still need to figure out
-		# how I'm gonna do this. Probably with some readlines (Yep, I like
-		# readline) that will write to the globals.php file.
-
-		# Set up the staging environment if the user wants this.
-		tput setaf 3
-		read -p "Do you want to setup your staging server? (yes|no) "
-		tput sgr0
-		case "$(tr '[:upper:]' '[:lower:]' <<< "$REPLY")" in
-			'yes'|'y')
-				# The user wants to setup a staging environment, let him have
-				# the fun!
-				echo "Configuring the staging environment."
-				configure-staging $projectName
-				;;
-
-			'no'|'n')
-				# No, the user doesn't want to create this now.
-				echo "Skipping the staging configuration."
-				;;
-
-			*)
-				# The user typed something strange, we'll assume no.
-				tput setaf 1
-				echo "Undefined option. Assuming no."
-				tput sgr0
-				;;
-		esac
-
-	fi
-
-	# Check if the users automatically wants to create a vhost.
-	tput setaf 3
-	read -p "Do you want to create a Virtual Host for your project? (yes|no) "
-	tput sgr0
-	case "$(tr '[:upper:]' '[:lower:]' <<< "$REPLY")" in
-		'yes'|'y')
-			# The user wants to create vhost, lets do it!
-			configure-vhost $projectName $PWD
-			;;
-
-		'no'|'n')
-			# Nope, the user doesn't want to create a vhost
-			;;
-
-		*)
-			# The user typed some weird stuff, skip this step.
-			tput setaf 1
-			echo "Undefined option. Assuming no."
-			tput sgr0
-			;;
-	esac
-}
-
-# This will allow you to rapidly set up your staging environment with all the required presets.
-configure-staging()
-{
-	projectName=$1
-
-	# If no project name is given, ask for one.
-	if [ "$projectName" == "" ]; then
-		tput setaf 3
-		read -p "Please, specify a project name: "
-		tput sgr0
-		projectName=$REPLY
-	fi
-
-	# Create the staging ssh identifier.
-	sshStaging="$projectName-staging"
-
-	# If the public key file does not exist, create one.
-	if [ ! -f ~/.ssh/$sshStaging.id_rsa.pub ]; then
-
-		# Ask for the staging host.
-		tput setaf 3
-		read -p "Specify a staging host name: "
-		stagingHost=$REPLY
-
-		# Ask for the staging user.
-		read -p "Specify a staging username: "
-		tput sgr0
-		stagingUser=$REPLY
-
-		# Create the ssh identifier.
-		# To use this, you need the dotfiles from @jelmersnoeck (.bash/commands)
-		configure-ssh-host $stagingUser $stagingHost $sshStaging $sshStaging
-
-	fi
-
-	# Generate the public key on the staging server.
-	echo "Generating public key on the staging server..."
-	ssh $sshStaging "ssh-keygen -f ~/.ssh/$projectName.id_rsa && cat ~/.ssh/$projectName.id_rsa.pub"
-
-	generatingDeployKey=true
-	while [[ "$generatingDeployKey" == true ]]; do
-
-		# Check if we've added it yet.
-		tput setaf 3
-		read -p "Have you added your public key to your github repository? (yes|no) "
-		tput sgr0
-
-		case "$(tr '[:upper:]' '[:lower:]' <<< "$REPLY")" in
-			'yes'|'y')
-				# The user has entered his deploy key to the github repo.
-				# @Todo: add something to test the connection.
-				generatingDeployKey=false
-				echo "Continuing installation..."
-				;;
-
-			'no'|'n')
-				# The user is waiting, probably on his lead, slowpokes!
-				echo "Waiting for deploy key configuration..."
-				;;
-
-			*)
-				# Stop drinking!
-				tput setaf 1
-				echo "Not matching any expected answer. Assuming 'no'"
-				tput sgr0
-				;;
-		esac
-
-	done
-
-	# If we've got here, this means our deploy key has been added. Setup our
-	# project in the default_www folder.
-	ssh $sshStaging "git clone $GITHUB_SERVER/$projectName.git ~/default_www"
-
-	# This is our staging server, set up the staging branch as default branch.
-	ssh $sshStaging "cd ~/default_www && git branch --track staging origin/staging && git checkout staging"
-
-	# We're done here, tell the user.
-	echo "Staging server configured! Well done, ninja."
-}
-
 # This will allow you to rapidly create a vhost configuration for your project.
+# IT adds a vhost to your vhost file (apache) and adds an entyr in the hosts
+# file.
+#
+# Note: this is created for Mac OS X.
 configure-vhost()
 {
-	projectName=$1
-	projectPath=$2
+    projectName=$1
+    projectPath=$2
 
-	if [[ "$projectName" == "" ]]; then
-		tput setaf 1
-		read -p "Please, specify a project name: "
-		tput sgr0
-		projectName=$REPLY
-	fi
+    if [[ "$projectName" == "" ]]; then
+        tput setaf 1
+        read -p "Please, specify a project name (${PWD##*/}): "
+        tput sgr0
+        projectName=$REPLY
+        if [[ "$REPLY" == "" ]]; then
+            projectName=${PWD##*/}
+        fi
+    fi
 
-	if [[ "$projectPath" == "" ]]; then
-		tput setaf 3
-		read -p "Please, specify a project path: "
-		tput sgr0
-		projectPath=$REPLY
-	fi
+    if [[ "$projectPath" == "" ]]; then
+        tput setaf 3
+        read -p "Please, specify a project path ($PWD): "
+        tput sgr0
 
-	# Create our vhost.
-	echo -e "127.0.0.1\t\t\t$projectName.dev" | sudo tee -a /etc/hosts > /dev/null;
-	echo -e "\n# $projectName.dev" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
-	echo -e "<VirtualHost *:80>" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
-	# @todo: fix this so we can use the real user information.
-	echo -e "\tServerAdmin jelmer.snoeck@siphoc.com" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
-	echo -e "\tDocumentRoot \"$projectPath\"" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
-	echo -e "\tServerName $projectName.dev" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
-	echo -e "\tServerAlias $projectName.*.xip.io" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
-	echo -e "\tErrorLog \"/private/var/log/apache2/$projectName-error_log\"" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
-	echo -e "\tCustomLog \"/private/var/log/apache2/$projectName-access_log\" common" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
-	echo -e "</virtualHost>" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
-	echo "VirtualHost $projectName.dev created.";
+        projectPath=$REPLY
+        if [[ "$REPLY" == "" ]]; then
+            projectPath=$PWD
+        fi
+    fi
 
-	# Restart apache to enable our newly created vhost.
-	sudo apachectl graceful;
-	echo "Apache server restarted.";
+    # Create our vhost.
+    echo -e "127.0.0.1\t\t\t$projectName.dev" | sudo tee -a /etc/hosts > /dev/null;
+    echo -e "\n# $projectName.dev" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
+    echo -e "<VirtualHost *:80>" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
+    echo -e "\tServerAdmin jelmer.snoeck@siphoc.com" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
+    echo -e "\tDocumentRoot \"$projectPath\"" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
+    echo -e "\tServerName $projectName.dev" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
+    echo -e "\tServerAlias $projectName.*.xip.io" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
+    echo -e "\tErrorLog \"/private/var/log/apache2/$projectName-error_log\"" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
+    echo -e "\tCustomLog \"/private/var/log/apache2/$projectName-access_log\" common" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
+    echo -e "</virtualHost>" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf > /dev/null;
+    echo "VirtualHost $projectName.dev created.";
+
+    # Restart apache to enable our newly created vhost.
+    sudo apachectl graceful;
+    echo "Apache server restarted.";
 }
