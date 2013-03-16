@@ -1,4 +1,4 @@
-# if git is installed, show the branc we're currently working in
+# if git is installed, show the branch we're currently working in
 type -t git > /dev/null \
 	&& __prompt_vcs_string='$(git-show-branch)${FG_YELLOW}$(git-dirty-state)' \
 	|| __prompt_vcs_string='';
