@@ -8,18 +8,15 @@ export PATH=/usr/local/share/npm/bin:$PATH
 # Set the OS
 OS=`uname -s`
 
-# load custom configuration
-for file in ~/{.git-completion.bash,.bash_aliases,.bash_commands}; do
-	[ -r "$file" ] && source "$file";
-done;
-unset file;
-
 # load the dotfile files.
-for file in ~/.bash/{development,aliases,shell,commands,prompt,extra.git-completion.bash,symfony2-autocomplete.bash}; do
-	[ -r "$file" ] && source "$file";
+for file in ~/.bash/{development,aliases,shell,commands,prompt,.git-completion.bash}; do
+    [ -r "$file" ] && source "$file";
 done;
 unset file;
 
-source ~/.bash/.git-completion.bash
+if [ ! -f ~/.bash_extra ]; then
+    touch ~/.bash_extra
+fi
+source ~/.bash_extra
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
