@@ -1,6 +1,12 @@
 # Tmux aliasing
 alias dev='~/.bin/tmux_open_project.sh'
 
+# Hub ftw
+alias git='hub'
+
+# iOS Simulator
+alias iossimulator="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
+
 # Ctags
 alias bctags='ctags -h ".php" -R .'
 
