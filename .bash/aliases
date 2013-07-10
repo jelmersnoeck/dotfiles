@@ -7,6 +7,9 @@ alias git='hub'
 # iOS Simulator
 alias iossimulator="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
 
+# Install all bundled gems
+alias bbundle='bundle install --path .bundle/gems --binstubs .bundle/bin'
+
 # Ctags
 alias bctags='ctags -h ".php" -R .'
 
