@@ -5,7 +5,10 @@ export PATH=$PATH:/usr/local/sbin
 export PATH="$HOME/.knife:$PATH"
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH="/usr/local/heroku/bin:$PATH"
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="./.bundle/bin:$PATH"
+
+eval "$(rbenv init -)"
 
 # Set the OS
 OS=`uname -s`
@@ -20,5 +23,3 @@ if [ ! -f ~/.bash_extra ]; then
     touch ~/.bash_extra
 fi
 source ~/.bash_extra
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
