@@ -2,9 +2,7 @@
 export PATH=/usr/local/bin:/usr/local/mysql/bin::/opt/local/sbin:$PATH
 export PATH="$HOME/.bin:$PATH"
 export PATH=$PATH:/usr/local/sbin
-export PATH="$HOME/.knife:$PATH"
 export PATH=/usr/local/share/npm/bin:$PATH
-export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="./.bundle/bin:$PATH"
 
