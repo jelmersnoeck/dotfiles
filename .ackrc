@@ -8,6 +8,12 @@
 --type-set=tpl=.tpl
 --type-add=html=.tpl
 
+# CSS
+--type-add=css=.scss
+
+# JavaScript templates
+--type-add=js=.coffee
+
 # PHP includes.
 --type-add=php=inc
 
