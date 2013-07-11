@@ -9,3 +9,4 @@ tags
 .vagrant
 *.pyc
 test-commands
+dump.rdb
