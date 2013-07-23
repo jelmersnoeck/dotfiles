@@ -11,6 +11,9 @@
 # CSS
 --type-add=css=.scss
 
+# Eruby
+--type-set=eruby=.erb
+
 # JavaScript templates
 --type-add=js=.coffee
 
