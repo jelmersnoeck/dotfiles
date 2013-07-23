@@ -1,6 +1,10 @@
 # Tmux aliasing
 alias dev='~/.bin/tmux_open_project.sh'
 
+# Shortcuts
+alias vc='cd ~/.vimconfig'
+alias df='cd ~/.dotfiles'
+
 # Hub ftw
 alias git='hub'
 
