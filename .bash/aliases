@@ -11,7 +11,7 @@ alias iossimulator="open /Applications/Xcode.app/Contents/Developer/Platforms/iP
 alias bbundle='bundle install --path .bundle/gems --binstubs .bundle/bin'
 
 # Ctags
-alias bctags='ctags -h ".php" -R .'
+alias bctags='ctags -R --exclude=.svn --exclude=.git --exclude=log *'
 
 # Easily resource all your files
 alias resource='source ~/.bashrc'
