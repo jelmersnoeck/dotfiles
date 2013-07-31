@@ -90,4 +90,8 @@ for sourceFile in .*; do
     ln -vs "$PWD/$sourceFile" "$targetFile";
 done;
 
+# Tmux + dependency
+brew install tmux
+brew install reattach-to-user-namespace
+
 echo "Done.";
