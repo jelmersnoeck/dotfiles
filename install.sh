@@ -94,6 +94,12 @@ done;
 brew install tmux
 brew install reattach-to-user-namespace
 
+# Ctags
+brew install ctags
+
+# Wget
+brew install wget
+
 # Rbenv + ruby
 brew install rbenv
 brew install ruby-build
@@ -101,5 +107,13 @@ rbenv install 1.9.3-p125
 rbenv install 1.9.3-p429
 rbenv install 2.0.0-p195
 rbenv global 2.0.0-p195
+
+# Hub
+gem install hub
+
+# MySQL
+brew install mysql
+ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
+mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
 
 echo "Done.";
