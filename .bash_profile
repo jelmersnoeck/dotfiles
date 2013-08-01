@@ -5,8 +5,8 @@ export PATH=$PATH:/usr/local/sbin
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="./.bundle/bin:$PATH"
-
 eval "$(rbenv init -)"
+export PATH="./.bundle/bin:$PATH"
 
 # Set the OS
 OS=`uname -s`
