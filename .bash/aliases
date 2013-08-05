@@ -5,9 +5,6 @@ alias dev='~/.bin/tmux_open_project.sh'
 alias vc='cd ~/.vimconfig'
 alias df='cd ~/.dotfiles'
 
-# Hub ftw
-alias git='hub'
-
 # iOS Simulator
 alias iossimulator="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
 
