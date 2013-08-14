@@ -100,6 +100,9 @@ brew install ctags
 # Wget
 brew install wget
 
+# Ctags
+brew install ctags-exuberant
+
 # Rbenv + ruby
 brew install rbenv
 brew install ruby-build
