@@ -119,4 +119,11 @@ brew install mysql
 ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
 mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
 
+# PSQL
+brew install postgres --no-python
+initdb /usr/local/var/postgres -E utf8
+
+# Redis
+brew install redis
+
 echo "Done.";
