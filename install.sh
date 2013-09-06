@@ -126,4 +126,7 @@ initdb /usr/local/var/postgres -E utf8
 # Redis
 brew install redis
 
+# Ack
+brew install ack
+
 echo "Done.";
