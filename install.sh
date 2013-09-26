@@ -129,4 +129,7 @@ brew install redis
 # Ack
 brew install ack
 
+# Youtube Downloads
+brew install youtube-dl
+
 echo "Done.";
