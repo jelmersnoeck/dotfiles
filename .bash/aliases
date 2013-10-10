@@ -28,14 +28,32 @@ alias grsa='grs .'
 alias gdf='git diff'
 alias gdc='git dc'
 
+# Rails
+alias rgc='rails g controller'
+alias rgm='rails g model'
+alias rgmi='rails g migration'
+alias rgs='rails g scaffold'
+alias rc='rails console'
+alias rdb='rails dbconsole'
+
+# Bundle
+alias bi='bundle install'
+alias bbi='bundle install --path .bundle/gems --binstubs .bundle/bin'
+alias bu='bundle update'
+alias be='bundle exec'
+
+# Rake
+alias rdc='be rake db:create:all'
+alias rdm='be rake db:migrate'
+alias rdr='be rake db:rollback'
+alias rdt='be rake db:test:prepare'
+alias rdmt='rdm && rdt'
+
 # iOS Simulator
 alias iossimulator="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
 
 # JS
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc'
-
-# Install all bundled gems
-alias bbundle='bundle install --path .bundle/gems --binstubs .bundle/bin'
 
 # Ctags
 alias bctags='ctags -R --exclude=.svn --exclude=.git --exclude=log *'
