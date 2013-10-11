@@ -4,9 +4,10 @@ To install my dotfiles, run the following:
 
     git clone git@github.com:jelmersnoeck/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && sh ./install.sh
 
-To install ack, run the following command:
+## Apps
+To install default apps:
 
-    curl http://betterthangrep.com/ack-standalone > ~/.bin/ack && chmod 0755 !$
+`./.brew`
 
 ##Credits
 Credits to @janmoesen & @davelens for some of their scripts.
