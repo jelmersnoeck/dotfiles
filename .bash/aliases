@@ -11,7 +11,6 @@ alias vc='cd ~/.vimconfig'
 alias df='cd ~/.dotfiles'
 
 # Git
-alias gst='git st'
 alias gaa='git aa'
 alias gco='git checkout'
 alias gcom='git checkout master'
