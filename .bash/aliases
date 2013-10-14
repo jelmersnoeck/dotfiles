@@ -3,6 +3,8 @@ alias irc='ssh -t tilaa screen -dr'
 
 # Tmux aliasing
 alias dev='~/.bin/tmux_open_project.sh'
+alias ta='tmux attach'
+alias tnz='tmux new -s zocial'
 
 # Shortcuts
 alias vc='cd ~/.vimconfig'
