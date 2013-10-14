@@ -35,6 +35,7 @@ alias gdf='git diff'
 alias gdc='git dc'
 
 # Rails
+alias rg='rails g'
 alias rgc='rails g controller'
 alias rgm='rails g model'
 alias rgmi='rails g migration'
