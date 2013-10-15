@@ -16,6 +16,9 @@ for file in ~/.bash/{development,aliases,shell,commands,prompt,.git-completion.b
 done;
 unset file;
 
+# Aliasing
+__git_complete gco _git_checkout
+
 if [ ! -f ~/.bash_extra ]; then
     touch ~/.bash_extra
 fi

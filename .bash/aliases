@@ -13,7 +13,7 @@ alias df='cd ~/.dotfiles'
 # Git
 alias gaa='git aa'
 alias gco='git checkout'
-alias gcom='git checkout master'
+alias gcom='git checkout master' # See .bash_profile for autocomplete
 alias gcob='git cob'
 alias gc='git ci'
 alias gmt='git merge-to'
