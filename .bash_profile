@@ -23,3 +23,6 @@ if [ ! -f ~/.bash_extra ]; then
     touch ~/.bash_extra
 fi
 source ~/.bash_extra
+
+# Postgress host
+export PGHOST=localhost
