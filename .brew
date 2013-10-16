@@ -22,6 +22,8 @@ brew install tree
 brew install ctags-exuberant
 brew install youtube-dl
 brew wkhtmltopdf
+brew install imagemagick
+brew install ghostscript
 
 # Rbenv + ruby
 brew install rbenv
