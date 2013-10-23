@@ -24,6 +24,7 @@ brew install youtube-dl
 brew wkhtmltopdf
 brew install imagemagick
 brew install ghostscript
+brew install go
 
 # Rbenv + ruby
 brew install rbenv
