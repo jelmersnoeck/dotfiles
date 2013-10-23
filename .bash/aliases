@@ -40,6 +40,11 @@ alias grsa='grs .'
 alias gdf='git diff'
 alias gdc='git dc'
 
+# Pow
+alias po='poweropen'
+alias rp='repower'
+alias pw='powerize'
+
 # Rails
 alias rg='rails g'
 alias rgc='rails g controller'
