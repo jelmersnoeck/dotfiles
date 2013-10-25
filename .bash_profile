@@ -6,6 +6,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="./.bundle/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="./.bundle/bin:$PATH"
+export GOPATH="$HOME/.gocode"
 
 # Set the OS
 OS=`uname -s`

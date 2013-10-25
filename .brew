@@ -25,6 +25,8 @@ brew wkhtmltopdf
 brew install imagemagick
 brew install ghostscript
 brew install go
+brew install hg
+go get github.com/heroku/hk
 
 # Rbenv + ruby
 brew install rbenv
