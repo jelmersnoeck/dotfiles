@@ -25,3 +25,5 @@
 
 # Fork CMS cache.
 --ignore-dir=compiled_templates
+--ignore-dir=coverage
+--ignore-dir=log
