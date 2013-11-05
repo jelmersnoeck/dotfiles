@@ -39,6 +39,8 @@ alias grs='git reset'
 alias grsa='grs .'
 alias gdf='git diff'
 alias gdc='git dc'
+alias hc='hub compare'
+alias hp='hub pull-request'
 
 # Pow
 alias po='poweropen'
