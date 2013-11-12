@@ -12,12 +12,12 @@ alias df='cd ~/.dotfiles'
 
 # Git
 alias gaa='git aa'
-alias gco='git checkout'
 alias gcom='git checkout master' # See .bash_profile for autocomplete
 alias gcob='git cob'
 alias gc='git ci'
 alias gb='git branch'
-alias gr='git remote'
+alias gr='git rebase'
+alias grm='git remote'
 alias gf='git fetch'
 alias gfm='git fetch master'
 alias gmt='git merge-to'
