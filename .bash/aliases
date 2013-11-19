@@ -10,8 +10,12 @@ alias tnz='tmux new -s zocial'
 alias vc='cd ~/.vimconfig'
 alias df='cd ~/.dotfiles'
 
+# General
+alias o='open'
+alias cl='clear'
+
 # Git
-alias gaa='git aa'
+alias ga='git aa'
 alias gcom='git checkout master' # See .bash_profile for autocomplete
 alias gcob='git cob'
 alias gc='git ci'
@@ -37,7 +41,7 @@ alias grp='git remote prune'
 alias grpo='grp origin'
 alias grs='git reset'
 alias grsa='grs .'
-alias gdf='git diff'
+alias gd='git diff'
 alias gdc='git dc'
 alias hc='hub compare'
 alias hp='hub pull-request'
