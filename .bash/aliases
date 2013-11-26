@@ -45,6 +45,7 @@ alias gd='git diff'
 alias gdc='git dc'
 alias hc='hub compare'
 alias hp='hub pull-request'
+alias gcr='git-create-remote'
 
 # Pow
 alias po='poweropen'
