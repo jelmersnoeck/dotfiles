@@ -5,6 +5,7 @@ export PATH=/usr/local/share/npm/bin:$PATH
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="./.bundle/bin:$PATH"
 eval "$(rbenv init -)"
+export EDITOR=vim
 
 # Set the OS
 OS=`uname -s`
@@ -25,3 +26,6 @@ source ~/.bash_extra
 
 # Postgress host
 export PGHOST=localhost
+
+# Direnv
+eval "$(direnv hook bash)"
