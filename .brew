@@ -26,6 +26,7 @@ brew install imagemagick
 brew install ghostscript
 brew install go
 brew install hg
+brew install phantomjs
 go get github.com/heroku/hk
 
 # Rbenv + ruby
