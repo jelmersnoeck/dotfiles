@@ -12,6 +12,7 @@ test-commands
 dump.rdb
 custom_plan.rb
 zeus.json
+.jhw-cache/*
 
 # direnv config
 .envrc
