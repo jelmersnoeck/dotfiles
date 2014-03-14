@@ -68,10 +68,14 @@ alias bu='bundle update'
 alias be='bundle exec'
 
 # Rake
+alias rk='be rake'
+alias rake='echo "Use rk instead!"'
+alias rdd='be rake db:drop:all'
 alias rdc='be rake db:create:all'
 alias rdm='be rake db:migrate'
 alias rdr='be rake db:rollback'
 alias rdt='be rake db:test:prepare'
+alias rdrebuild='be rake db:drop:all db:create:all db:migrate db:test:prepare'
 alias rdmt='rdm && rdt'
 
 # iOS Simulator
