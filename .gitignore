@@ -13,6 +13,9 @@ dump.rdb
 custom_plan.rb
 zeus.json
 .jhw-cache/*
+Guardfile
+.springify
 
 # direnv config
 .envrc
+database.sql
