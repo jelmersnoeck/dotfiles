@@ -48,7 +48,7 @@
     po = push origin
 
     # Quickly pull from the origin
-    pu = pull origin
+    pu = pull --rebase origin
 
     # I know "pum" could just as well stand for "PUsh" instead of "PUll", but
     # I am so used to "git pom" that "git pum" feels like a natural
