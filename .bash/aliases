@@ -71,7 +71,6 @@ alias be='bundle exec'
 
 # Rake
 alias rk='be rake'
-alias rake='echo "Use rk instead!"'
 alias rdd='be rake db:drop:all'
 alias rdc='be rake db:create:all'
 alias rdm='be rake db:migrate'
