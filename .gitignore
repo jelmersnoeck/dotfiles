@@ -15,6 +15,7 @@ zeus.json
 .jhw-cache/*
 Guardfile
 .springify
+.rspec
 
 # direnv config
 .envrc
