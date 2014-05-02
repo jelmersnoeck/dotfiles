@@ -62,6 +62,12 @@
     # Commit
     ci = commit --verbose
 
+    # Get pull request information from GitHub
+    prs = fetch origin '+refs/pull/*/head:refs/pull/*'
+
+    # Checkout pull request
+    pr = git checkout refs/pull/
+
     # Like "git show myfile", but uses the last commit that changed "myfile".
     sl = log -n 1 -p
 
