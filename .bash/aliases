@@ -46,6 +46,8 @@ alias gdc='git dc'
 alias hc='hub compare'
 alias hp='hub pull-request'
 alias gcr='git-create-remote'
+alias gstl='git stash list'
+alias gst='git stash -u'
 
 # Pow
 alias po='poweropen'
