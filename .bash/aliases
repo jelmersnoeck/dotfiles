@@ -79,6 +79,9 @@ alias rdt='be rake db:test:prepare'
 alias rdrebuild='be rake db:drop:all db:create:all db:migrate db:test:prepare'
 alias rdmt='rdm && rdt'
 
+# Docker
+alias dup='/usr/local/bin/boot2docker up && export DOCKER_HOST=tcp://$(/usr/local/bin/boot2docker ip 2>/dev/null):2375'
+
 # iOS Simulator
 alias iossimulator="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
 
