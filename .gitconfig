@@ -7,7 +7,7 @@
     filemode = true
     bare = false
     logallrefupdates = true
-    ignorecase = true
+	ignorecase = false
     excludesfile = ~/.gitignore
     editor = vim
 
