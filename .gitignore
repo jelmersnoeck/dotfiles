@@ -16,6 +16,7 @@ zeus.json
 Guardfile
 .springify
 .rspec
+benchmarks/*
 
 # direnv config
 .envrc
