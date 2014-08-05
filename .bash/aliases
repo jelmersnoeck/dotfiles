@@ -82,6 +82,9 @@ alias rdmt='rdm && rdt'
 # Docker
 alias dip='/usr/local/bin/boot2docker ip'
 alias dup='/usr/local/bin/boot2docker up && export DOCKER_HOST=tcp://$(dip 2>/dev/null):2375'
+alias drma='docker rm $(docker ps -a -q)'
+alias dsa='docker stop $(docker ps -a -q)'
+alias dps='docker ps -a'
 
 # iOS Simulator
 alias iossimulator="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
