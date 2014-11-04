@@ -15,6 +15,9 @@ brew install bash
 # Git
 brew install git
 
+# Dotfiles
+git clone git@github.com:jelmersnoeck/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && sh ./install.sh
+
 # Tmux + dependency
 brew install tmux
 brew install reattach-to-user-namespace
