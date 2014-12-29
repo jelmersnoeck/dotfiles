@@ -1,5 +1,5 @@
 # IRC
-alias irc='ssh -t tilaa screen -dr'
+alias irc='ssh -D 2001 -t tilaa screen -dr'
 
 # Tmux aliasing
 alias dev='~/.bin/tmux_open_project.sh'
@@ -13,6 +13,7 @@ alias df='cd ~/.dotfiles'
 # General
 alias o='open'
 alias cl='clear'
+alias myip='curl ifconfig.me/ip'
 
 # Git
 alias ga='git aa'
@@ -76,8 +77,9 @@ alias rdc='be rake db:create:all'
 alias rdm='be rake db:migrate db:test:prepare'
 alias rdr='be rake db:rollback'
 alias rdt='be rake db:test:prepare'
-alias rdrebuild='be rake db:drop:all db:create:all db:migrate db:test:prepare'
+alias rdrebuild='be rake db:drop:all db:create:all db:migrate db:seed'
 alias rdmt='rdm && rdt'
+alias rta='rdt && rk'
 
 # Docker
 alias dip='/usr/local/bin/boot2docker ip'
@@ -85,6 +87,13 @@ alias dup='/usr/local/bin/boot2docker up && export DOCKER_HOST=tcp://$(dip 2>/de
 alias drma='docker rm $(docker ps -a -q)'
 alias dsa='docker stop $(docker ps -a -q)'
 alias dps='docker ps -a'
+
+# Heroku
+alias hk='heroku'
+alias hkp='heroku accounts:set personal'
+alias hkw='heroku accounts:set personal'
+alias hkt='heroku logs --tail'
+alias hkc='heroku run rails c'
 
 # iOS Simulator
 alias iossimulator="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
