@@ -109,3 +109,5 @@
     ui = true
 [init]
 	templatedir = ~/.git_template
+[heroku]
+	account = personal
