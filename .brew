@@ -37,38 +37,14 @@ go get github.com/heroku/hk
 # Rbenv + ruby
 brew install rbenv
 brew install ruby-build
-rbenv install 2.1.2
-rbenv global 2.1.2
-gem install hub
+install-ruby 2.1.5
 
-# Databases
-## MySQL
-brew install mysql
-ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
-mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
 # PSQL
-brew install postgres --no-python
-initdb /usr/local/var/postgres -E utf8
+brew install postgresql
+ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+
 # Redis
 brew install redis
-
- #Native apps
-brew tap phinze/homebrew-cask
-brew install brew-cask
-
-function installcask() {
-    brew cask install "${@}" 2> /dev/null
-}
-
-installcask dropbox
-installcask virtualbox
-installcask google-chrome
-installcask iterm2
-installcask vlc
-installcask alfred
-installcask size-up
-installcask hip-chat
-installcask caffeine
-installcask spotify
-
-brew clean
+ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
