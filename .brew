@@ -25,6 +25,7 @@ brew install ctags
 brew install wget
 brew install ag
 brew install ctags-exuberant
+brew install qt
 brew wkhtmltopdf
 brew install imagemagick
 brew install ghostscript
