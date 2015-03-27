@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-xcode-select install
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# xcode-select install
+# ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Brew
 brew update
@@ -33,6 +33,7 @@ brew install go
 brew install hg
 brew install phantomjs
 brew install direnv
+brew install heroku-toolbelt
 go get github.com/heroku/hk
 
 # Rbenv + ruby
@@ -49,3 +50,7 @@ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 brew install redis
 ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
+
+brew install memcached
+ln -sfv /usr/local/opt/memcached/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist
