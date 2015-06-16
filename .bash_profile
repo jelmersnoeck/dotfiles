@@ -4,7 +4,6 @@ export PATH=$PATH:/usr/local/sbin
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="./.bundle/bin:$PATH"
-eval "$(rbenv init -)"
 export EDITOR=vim
 
 # Set the OS
@@ -29,3 +28,4 @@ export PGHOST=localhost
 
 # Direnv
 eval "$(direnv hook bash)"
+eval "$(rbenv init -)"
