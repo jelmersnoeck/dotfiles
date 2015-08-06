@@ -2,7 +2,7 @@
 ##Install
 To install my dotfiles, run the following:
 
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" && ./tmp/install-dotfiles
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/jelmersnoeck/dotfiles/master/.brew)" && ./tmp/install-dotfiles
 
 ## Apps
 To install default apps:
