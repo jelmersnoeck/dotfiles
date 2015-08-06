@@ -5,7 +5,7 @@ commonFiles=();
 for sourceFile in .*; do
 
     # Exclude some files.
-    if [[ "$sourceFile" == "install.sh" ]] || [[ "$sourceFile" == "README.md" ]] || [[ "$sourceFile" == "." ]] || [[ "$sourceFile" == ".." ]] || [[ "$sourceFile" == ".git" ]]; then
+    if [[ "$sourceFile" == "install.sh" ]] || [[ "$sourceFile" == "remote-install" ]] || [[ "$sourceFile" == "README.md" ]] || [[ "$sourceFile" == "." ]] || [[ "$sourceFile" == ".." ]] || [[ "$sourceFile" == ".git" ]]; then
         continue;
     fi;
 
@@ -79,7 +79,7 @@ done;
 for sourceFile in .*; do
 
     # Exclude some files.
-    if [[ "$sourceFile" == "install.sh" ]] || [[ "$sourceFile" == "README.md" ]] || [[ "$sourceFile" == "." ]] || [[ "$sourceFile" == ".." ]] || [[ "$sourceFile" == ".git" ]]; then
+    if [[ "$sourceFile" == "install.sh" ]] || [[ "$sourceFile" == "remote-install" ]] || [[ "$sourceFile" == "README.md" ]] || [[ "$sourceFile" == "." ]] || [[ "$sourceFile" == ".." ]] || [[ "$sourceFile" == ".git" ]]; then
         continue;
     fi;
 
