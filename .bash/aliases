@@ -110,7 +110,7 @@ alias resource='source ~/.bashrc'
 if [[ $OS == 'Darwin' ]]
 then
 	alias ls='ls -G'
-	alias lsa='ls -alG'
+	alias lsa='ls -alGh'
 fi
 
 if [[ $OS == 'Linux' ]]
