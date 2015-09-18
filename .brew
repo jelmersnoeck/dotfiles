@@ -37,12 +37,18 @@ brew install hg
 brew install phantomjs
 brew install direnv
 brew install heroku-toolbelt
+
+# Go binaries
 go get github.com/heroku/hk
+go get golang.org/x/tools/cmd/goimports
+go get github.com/vektra/mockery/.../
+go get github.com/axw/gocov/gocov
+go get gopkg.in/matm/v1/gocov-html
 
 # Rbenv + ruby
 brew install rbenv
 brew install ruby-build
-install-ruby 2.1.5
+install-ruby 2.2.2
 
 # PSQL
 brew install postgresql

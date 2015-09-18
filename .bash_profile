@@ -5,6 +5,8 @@ export PATH=/usr/local/share/npm/bin:$PATH
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="./.bundle/bin:$PATH"
 export EDITOR=vim
+export GOPATH="/Users/jelmersnoeck/Projects/goprojects"
+export PATH=$PATH:$GOPATH/bin
 
 # Set the OS
 OS=`uname -s`
