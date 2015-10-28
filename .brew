@@ -36,6 +36,7 @@ brew install go
 brew install hg
 brew install phantomjs
 brew install direnv
+brew install tree
 brew tap homebrew/services
 brew install heroku-toolbelt
 
