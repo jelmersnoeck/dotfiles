@@ -30,7 +30,7 @@ function open_tmux_session()
 
     # editor window
     tmux new-session -s $project -n editor -d
-    tmux send-keys -t $project "cd $path/$project" C-m
+    tmux send-keys -t $project "cd -P $path/$project" C-m
     tmux send-keys -t $project "vim" C-m
 
     # database window
