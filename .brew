@@ -48,6 +48,7 @@ go get github.com/bradfitz/goimports
 go get github.com/vektra/mockery/.../
 go get github.com/axw/gocov/gocov
 go get gopkg.in/matm/v1/gocov-html
+go get github.com/golang/lint/golint
 
 # Rbenv + ruby
 brew install rbenv
