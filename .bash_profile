@@ -31,3 +31,6 @@ export PGHOST=localhost
 # Direnv
 eval "$(direnv hook bash)"
 eval "$(rbenv init -)"
+
+export NVM_DIR="/Users/jelmersnoeck/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
