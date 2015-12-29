@@ -39,6 +39,7 @@ brew install direnv
 brew install tree
 brew tap homebrew/services
 brew install heroku-toolbelt
+brew install Goles/battery/battery
 brew install rpm2cpio
 
 # Go binaries
