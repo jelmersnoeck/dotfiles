@@ -41,6 +41,7 @@ brew tap homebrew/services
 brew install heroku-toolbelt
 brew install Goles/battery/battery
 brew install rpm2cpio
+brew install httpie
 
 # Go binaries
 go get github.com/heroku/hk
