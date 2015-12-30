@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 xcode-select install
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install/install)"
 
 touch ~/.bash_profile
 source ~/.bash_profile
@@ -19,7 +19,7 @@ brew install bash
 brew install git
 
 # Dotfiles
-git clone git@github.com:jelmersnoeck/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && sh ./install.sh
+git clone git@github.com:jelmersnoeck/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && sh ./install/install.sh
 
 # Tmux + dependency
 brew install tmux
