@@ -50,11 +50,6 @@ alias gcr='git-create-remote'
 alias gstl='git stash list'
 alias gst='git stash -u'
 
-# Pow
-alias po='poweropen'
-alias rp='repower'
-alias pw='powerize'
-
 # Rails
 alias rg='rails g'
 alias rgc='rails g controller'
