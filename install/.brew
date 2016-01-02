@@ -42,6 +42,7 @@ brew install heroku-toolbelt
 brew install Goles/battery/battery
 brew install rpm2cpio
 brew install httpie
+brew install protobuf
 
 # Go binaries
 go get github.com/heroku/hk
