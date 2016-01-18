@@ -53,11 +53,15 @@ go get github.com/axw/gocov/gocov
 go get gopkg.in/matm/v1/gocov-html
 go get github.com/golang/lint/golint
 go get github.com/kisielk/errcheck
+go get github.com/golang/protobuf/...
 
 # Rbenv + ruby
 brew install rbenv
 brew install ruby-build
 install-ruby 2.2.2
+
+# gRPC
+curl -fsSL https://goo.gl/getgrpc | bash -s ruby
 
 # NVM
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
