@@ -21,6 +21,10 @@
 [github]
 	user = jelmersnoeck
 
+# URL overwrites
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+
 [push]
     # Make "git push" or "git push <remote>" only push the current branch to
     # the tracked branch (regardless of its remote name) as opposed to pushing
