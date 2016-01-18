@@ -7,6 +7,7 @@ export PATH="./.bundle/bin:$PATH"
 export EDITOR=vim
 export GOPATH="/Users/jelmersnoeck/Projects/goprojects"
 export PATH=$PATH:$GOPATH/bin
+export GO15VENDOREXPERIMENT=1
 
 # Set the OS
 OS=`uname -s`
