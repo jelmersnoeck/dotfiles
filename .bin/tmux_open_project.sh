@@ -45,14 +45,6 @@ function open_tmux_session()
     tmux send-keys -t $project:3 "cd $path/$project" C-m
     tmux send-keys -t $project:3 "git st" C-m
 
-    # If this is a project that contains a vagrant file, create a vagrant
-    # window.
-    if [ -f $path/$project/Vagrantfile ]; then
-        tmux new-window -n vagrant -t $project
-        tmux send-keys -t $project:4 "cd $path/$project" C-m
-        tmux send-keys -t $project:4 "vagrant ssh" C-m
-    fi
-
     # select the editor and attach to the session
     tmux select-window -t $project:1
 }
