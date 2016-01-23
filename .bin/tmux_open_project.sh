@@ -35,14 +35,14 @@ function open_tmux_session()
 
     # database window
     tmux new-window -n database -t $project
-    tmux send-keys -t $project:2 "cd $path/$project" C-m
+    tmux send-keys -t $project:2 "cd -P $path/$project" C-m
     if [ -f $path/$project/dbshell ]; then
         tmux send-keys -t $project:2 "./dbshell" C-m
     fi
 
     # shell window
     tmux new-window -n shell -t $project
-    tmux send-keys -t $project:3 "cd $path/$project" C-m
+    tmux send-keys -t $project:3 "cd -P $path/$project" C-m
     tmux send-keys -t $project:3 "git st" C-m
 
     # select the editor and attach to the session
