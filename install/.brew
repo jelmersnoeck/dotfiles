@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 xcode-select install
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install/install)"
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 touch ~/.bash_profile
 source ~/.bash_profile
