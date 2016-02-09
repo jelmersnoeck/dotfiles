@@ -20,6 +20,7 @@ brew install git
 
 # Dotfiles
 git clone git@github.com:jelmersnoeck/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && sh ./install/install.sh
+source ~/.bashrc
 
 # Tmux + dependency
 brew install tmux
@@ -42,9 +43,14 @@ brew install heroku-toolbelt
 brew install Goles/battery/battery
 brew install rpm2cpio
 brew install httpie
-brew install protobuf
+# need protobuf 3
+brew install protobuf --devel
+brew install bzr
+brew install glide
+brew install libgit2 --with-libssh2
 
 # Go binaries
+mkdir -p ~/Projects/goprojects
 go get github.com/heroku/hk
 go get golang.org/x/tools/cmd/goimports
 go get github.com/bradfitz/goimports
@@ -53,15 +59,12 @@ go get github.com/axw/gocov/gocov
 go get gopkg.in/matm/v1/gocov-html
 go get github.com/golang/lint/golint
 go get github.com/kisielk/errcheck
-go get github.com/golang/protobuf/...
+go get github.com/jteeuwen/go-bindata
 
 # Rbenv + ruby
 brew install rbenv
 brew install ruby-build
 install-ruby 2.2.2
-
-# gRPC
-curl -fsSL https://goo.gl/getgrpc | bash -s ruby
 
 # NVM
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
