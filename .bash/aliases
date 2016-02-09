@@ -1,6 +1,9 @@
 # IRC
 alias irc='ssh -D 2001 -t tilaa screen -dr'
 
+# Overwrite `cd` command so it always follows symlinks.
+alias cd='cd -P'
+
 # Tmux aliasing
 alias dev='~/.bin/tmux_open_project.sh'
 alias ta='tmux attach'
@@ -74,6 +77,10 @@ alias rdr='be rake db:rollback'
 alias rdt='be rake db:test:prepare'
 alias rdrebuild='be rake db:drop:all db:create:all db:migrate db:seed'
 alias rta='rdt && rk'
+
+# Go
+alias gi="glide install"
+alias gg="glide get -u"
 
 # Docker
 alias dos='docker-machine start default && doi'
