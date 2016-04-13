@@ -1,6 +1,7 @@
 [user]
     name = Jelmer Snoeck
     email = jelmer.snoeck@gmail.com
+	signingkey = F888F135
 
 [core]
     repositoryformatversion = 0
@@ -64,7 +65,7 @@
     dc = diff --cached
 
     # Commit
-    ci = commit --verbose
+    ci = commit -S --verbose
 
     # Get pull request information from GitHub
     prs = fetch origin '+refs/pull/*/head:refs/pull/*'
