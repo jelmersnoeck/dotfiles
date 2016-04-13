@@ -18,6 +18,9 @@ alias o='open'
 alias cl='clear'
 alias myip='curl ifconfig.me/ip'
 
+# Glide deveopment
+alias gld='/Users/jelmersnoeck/Projects/goprojects/src/github.com/masterminds/glide/glide'
+
 # Git
 alias ga='git aa'
 alias gcom='git checkout master' # See .bash_profile for autocomplete
@@ -81,6 +84,8 @@ alias rta='rdt && rk'
 # Go
 alias gi="glide install"
 alias gg="glide get -u"
+alias gu='rm -rf vendor/ && glide up -u'
+alias gorm='go run main.go'
 
 # Docker
 alias dos='docker-machine start default && doi'
@@ -92,6 +97,9 @@ alias hkp='heroku accounts:set personal'
 alias hkw='heroku accounts:set work'
 alias hkt='heroku logs --tail'
 alias hkc='heroku run rails c'
+
+# Make
+alias mt='make test'
 
 # iOS Simulator
 alias iossimulator="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"

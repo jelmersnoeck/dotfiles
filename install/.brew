@@ -36,6 +36,7 @@ brew install ghostscript
 brew install go
 brew install hg
 brew install phantomjs
+brew install gpg
 brew install direnv
 brew install tree
 brew tap homebrew/services
