@@ -37,6 +37,8 @@ brew install go
 brew install hg
 brew install phantomjs
 brew install gpg
+brew install gpg-agent
+brew install pinentry-mac
 brew install direnv
 brew install tree
 brew tap homebrew/services

@@ -1,7 +1,7 @@
 [user]
     name = Jelmer Snoeck
     email = jelmer.snoeck@gmail.com
-	signingkey = F888F135
+	signingkey = A6DD9576
 
 [core]
     repositoryformatversion = 0
@@ -116,3 +116,5 @@
 	templatedir = ~/.git_template
 [heroku]
 	account = personal
+[commit]
+	gpgsign = true

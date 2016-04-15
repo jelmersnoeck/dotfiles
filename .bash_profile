@@ -35,3 +35,12 @@ eval "$(rbenv init -)"
 
 export NVM_DIR="/Users/jelmersnoeck/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Don't ask for GPG passphrase every time.
+# https://github.com/pstadler/keybase-gpg-github
+if test -f ~/.gnupg/.gpg-agent-info -a -n "$(pgrep gpg-agent)"; then
+    source ~/.gnupg/.gpg-agent-info
+    export GPG_AGENT_INFO
+else
+    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+fi
