@@ -1,5 +1,9 @@
 # IRC
-alias irc='ssh -D 2001 -t tilaa screen -dr'
+alias irc='ssh -t tilaa screen -dr'
+alias dirc='ssh -D 2001 -t tilaa screen -dr'
+
+# SOPHOS FFS
+alias freedom='while true; do sudo killall SophosWebIntelligence; sleep 1; done'
 
 # Overwrite `cd` command so it always follows symlinks.
 alias cd='cd -P'
