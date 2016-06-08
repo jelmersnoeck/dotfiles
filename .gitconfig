@@ -1,14 +1,14 @@
 [user]
     name = Jelmer Snoeck
     email = jelmer.snoeck@gmail.com
-	signingkey = A6DD9576
+    signingkey = A6DD9576
 
 [core]
     repositoryformatversion = 0
     filemode = true
     bare = false
     logallrefupdates = true
-	ignorecase = false
+    ignorecase = false
     excludesfile = ~/.gitignore
     editor = vim
 
@@ -20,7 +20,7 @@
     log = true
 
 [github]
-	user = jelmersnoeck
+    user = jelmersnoeck
 
 # URL overwrites
 [url "git@github.com:"]
@@ -113,8 +113,8 @@
 [color]
     ui = true
 [init]
-	templatedir = ~/.git_template
+    templatedir = ~/.git_template
 [heroku]
-	account = personal
+    account = personal
 [commit]
-	gpgsign = true
+    gpgsign = true
