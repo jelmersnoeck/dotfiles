@@ -1,0 +1,285 @@
+#!/bin/bash
+
+# OS X's file system is case-insensitive by default, so use aliases to get
+# "GET"/"HEAD"/… working. (Otherwise "HEAD" would execute "/usr/bin/head".)
+[[ "$OSTYPE" =~ ^darwin ]] && for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+    alias "$method"="/usr/bin/lwp-request -m $method";
+done;
+unset method;
+
+# Adds ~/.ssh/config to the ssh autocomplete. This way you can use autocomplete
+# to ssh to the servers you've added via the configure-ssh-host command.
+ssh-load-autocomplete()
+{
+    complete -W "$(awk '/^\s*Host\s*/ { sub(/^\s*Host /, ""); print; }' ~/.ssh/config)" ssh
+}
+
+# Start the autocomplete when our bash starts
+ssh-load-autocomplete
+
+# Show the current active Git branch, if any.
+function git-show-branch {
+    branch="$(git symbolic-ref -q HEAD 2>/dev/null)";
+    ret=$?;
+    case $ret in
+        0) echo "${branch##refs/heads/}";;
+        1) echo 'no branch';;
+        128) echo -n;;
+        *) echo "[unknown git exit code: $ret]";;
+    esac;
+    return $ret;
+}
+
+# Create a remote branch linked to our local branch. This is an easy setup so
+# we don't have to do "git push -u origin <branch>" anymore.
+function git-create-remote {
+    gpo -u "$(git-show-branch)"
+}
+
+# Show what a given command really is. It is a combination of "type", "file"
+# and "ls". Unlike "which", it does not only take $PATH into account. This
+# means it works for aliases and hashes, too. (The name "whatis" was taken,
+# and I did not want to overwrite "which", hence "wtfis".)
+# The return value is the result of "type" for the last command specified.
+function wtfis {
+    local cmd type i=1 ret=0;
+    if [ $# -eq 0 ]; then
+        # Use "fc" to get the last command, and use that when no command
+        # was given as a parameter to "wtfis".
+        set -- $(fc -nl -1);
+        while [ $# -gt 0 -a '(' "sudo" = "$1" -o "-" = "${1:0:1}" ')' ]; do
+            # Ignore "sudo" and options ("-x" or "--bla").
+            shift;
+        done;
+        # Replace the positional parameter array with the last command name.
+        set -- "$1";
+    fi;
+    for cmd; do
+        type="$(type "$cmd")";
+        ret=$?;
+        if [ $ret -eq 0 ]; then
+            # Try to get the physical path. This works for hashes and
+            # "normal" binaries.
+            local path="$(type -p "$cmd")";
+            if [ -z "$path" ]; then
+                # Show the output from "type" without ANSI escapes.
+                echo "${type//$'\e'/\\033}";
+
+                case "$(command -v "$cmd")" in
+                    'alias')
+                        local alias_="$(alias "$cmd")";
+                        # The output looks like "alias foo='bar'"; so
+                        # strip everything except the body.
+                        alias_="${alias_#*\'}";
+                        alias_="${alias_%\'}";
+                        # Use "read" to process escapes. E.g. 'test\ it'
+                        # will # be read as 'test it'. This allows for
+                        # spaces inside command names.
+                        read -d ' ' alias_ <<< "$alias_";
+                        # Recurse and indent the output.
+                        # TODO: prevent infinite recursion
+                        wtfis "$alias_" 2>&2 | sed 's/^/  /';
+                        ;;
+                    'keyword' | 'builtin')
+                        # Get the one-line description from the built-in
+                        # help, if available. Note that this does not
+                        # guarantee anything useful, though. Look at the
+                        # output for "help set", for instance.
+                        help "$cmd" 2> /dev/null | {
+                            local buf line;
+                            read -r line;
+                            while read -r line; do
+                                buf="$buf${line/.  */.} ";
+                                if [[ "$buf" =~ \.\ $ ]]; then
+                                    echo "$buf";
+                                    break;
+                                fi;
+                            done;
+                        };
+                        ;;
+                esac;
+            else
+                # For physical paths, get some more info.
+                # First, get the one-line description from the man page.
+                # ("col -b" gets rid of the backspaces used by OS X's man
+                # to get a "bold" font.)
+                (COLUMNS=10000 man "$(basename "$path")" 2>/dev/null) | col -b | \
+                awk '/^NAME$/,/^$/' | {
+                    local buf line;
+                    read -r line;
+                    while read -r line; do
+                        buf="$buf${line/.  */.} ";
+                        if [[ "$buf" =~ \.\ $ ]]; then
+                            echo "$buf";
+                            buf='';
+                            break;
+                        fi;
+                    done;
+                    [ -n "$buf" ] && echo "$buf";
+                }
+
+                # Get the absolute path for the binary.
+                local full_path="$(
+                    cd "$(dirname "$path")" \
+                        && echo "$PWD/$(basename "$path")" \
+                        || echo "$path"
+                )";
+
+                # Then, combine the output of "type" and "file".
+                local fileinfo="$(file "$full_path")";
+                echo "${type%$path}${fileinfo}";
+
+                # Finally, show it using "ls" and highlight the path.
+                # If the path is a symlink, keep going until we find the
+                # final destination. (This assumes there are no circular
+                # references.)
+                local paths=("$path") target_path="$path";
+                while [ -L "$target_path" ]; do
+                    target_path="$(readlink "$target_path")";
+                    paths+=("$(
+                        # Do some relative path resolving for systems
+                        # without readlink --canonicalize.
+                        cd "$(dirname "$path")";
+                        cd "$(dirname "$target_path")";
+                        echo "$PWD/$(basename "$target_path")"
+                    )");
+                done;
+                local ls="$(command ls -fdalF "${paths[@]}")";
+                echo "${ls/$path/$'\e[7m'${path}$'\e[27m'}";
+            fi;
+        fi;
+
+        # Separate the output for all but the last command with blank lines.
+        [ $i -lt $# ] && echo;
+        let i++;
+    done;
+    return $ret;
+}
+
+# Shorten git command, default to git st by default.
+function g {
+  if [[ $# > 0 ]]; then
+    git $@
+  else
+    git st
+  fi
+}
+
+# Shorten git checkout. I use to do gco instead of gco . a lot. Fix that.
+function gco {
+  if [[ $# > 0 ]]; then
+    git checkout $@
+  else
+    git checkout .
+  fi
+}
+
+# Easy `g stash apply stash{x}`
+function gsta {
+  if [[ $# > 0 ]]; then
+      git stash apply stash@{$@}
+  else
+      git stash apply
+  fi
+}
+
+# Drop a certain stash
+function gstd {
+  if [[ $# > 0 ]]; then
+      git stash drop stash@{$@}
+  else
+      git stash drop stash@{0}
+  fi
+}
+
+# Show my top used commands history
+function smh {
+    cat ~/.bash_history | awk '{CMD[$1]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n15
+}
+
+# Install new version of ruby, update ruby-build as well
+function install-ruby {
+    brew update
+    brew upgrade ruby-build
+    rbenv install $@
+    RBENV_VERSION=$@ gem install bundle
+    RBENV_VERSION=$@ gem install hub
+    RBENV_VERSION=$@ gem install rubocop
+}
+
+function setup-project {
+    cp config/env.yml.example config/env.yml
+    cp config/database.yml.example config/database.yml
+    bi
+    rdrebuild
+    rk
+}
+
+function new-go-project {
+    name=$@
+    cd ~/Projects
+    mkdir ~/Projects/goprojects/src/github.com/jelmersnoeck/$name
+    ln -sf ~/Projects/goprojects/src/github.com/jelmersnoeck/$name
+    cd ~/Projects/$name
+    git init
+    cd ~/Projects
+    dev $name
+}
+
+function new-ruby-project {
+    name=$@
+    mkdir ~/Projects/$name
+    cd ~/Projects/$name
+    mkdir lib
+    touch lib/.gitkeep
+    gemfile="source 'https://rubygems.org'
+
+group :development, :test do
+  gem 'rspec'
+end
+    "
+    echo "$gemfile" >> Gemfile
+    echo '--color' >> .rspec
+    spaced_name=${name/-/ }
+    echo "# $spaced_name" >> README.md
+    bundle install
+    be rspec --init
+    g init
+    dev $name
+}
+
+# Get a git diff on $1 (master..feature-branch) and exclude folder $2 from the
+# diff.
+gdiff() {
+    git diff $1 --name-only | grep -v "^$2" | xargs git diff $1 --
+}
+
+# Notification script. This will wrap a script inside the function and use OS X
+# notification center to let me know when the script has ran. This is useful
+# for long running scripts that you want to run in the background but want to be
+# informed of when it's done.
+notify_script() {
+    "$@"
+    osascript -e 'display notification "The script has succesfully ended." with title "Script has run!"'
+}
+
+# Curtosy of @jackbot
+aws-list-instances() {
+    aws ec2 describe-instances --filters "Name=tag:Name,Values=*$1*" --query 'Reservations[].Instances[].[PrivateIpAddress,InstanceId,Tags[?Key==`Name`].Value[]]' --output text
+}
+
+# `gt` runs the tests for all subpackages of your main package except for
+# example and vendored packages.
+function gt {
+    go test -race -bench=. -benchmem -run=. -v $(go list ./... | grep -v '\/vendor\/\|\/examples\/')
+}
+
+# `gtp` runs the tests for a specific package
+function gtp {
+    go test -race -bench=. -benchmem -run=. -v $1
+}
+
+# `gtr` runs all the tests that match a specific regex for all the subpackages.
+function gtr {
+    go test -race -bench=. -benchmem -run=$1 -v $(go list ./... | grep -v '\/vendor\/\|\/examples\/')
+}
