@@ -271,15 +271,15 @@ aws-list-instances() {
 # `gt` runs the tests for all subpackages of your main package except for
 # example and vendored packages.
 function gt {
-    go test -race -bench=. -benchmem -run=. -v $(go list ./... | grep -v '\/vendor\/\|\/examples\/')
+    go test -race -bench . -benchmem -run . -v $(go list ./... | grep -v '\/vendor\/\|\/examples\/')
 }
 
 # `gtp` runs the tests for a specific package
 function gtp {
-    go test -race -bench=. -benchmem -run=. -v $1
+    go test -race -bench=. -benchmem -run . -v $1
 }
 
 # `gtr` runs all the tests that match a specific regex for all the subpackages.
 function gtr {
-    go test -race -bench=. -benchmem -run=$1 -v $(go list ./... | grep -v '\/vendor\/\|\/examples\/')
+    go test -race -bench . -benchmem -run $1 -v $(go list ./... | grep -v '\/vendor\/\|\/examples\/')
 }
