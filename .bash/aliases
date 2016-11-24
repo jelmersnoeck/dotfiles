@@ -88,7 +88,7 @@ alias rta='rdt && rk'
 # Go
 alias gi="glide install"
 alias gg="glide get -u"
-alias gu='rm -rf vendor/ && glide up -u'
+alias gu='rm -rf vendor/ && glide up --force'
 alias gorm='go run main.go'
 
 # Docker
