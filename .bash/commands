@@ -283,3 +283,7 @@ function gtp {
 function gtr {
     go test -race -bench . -benchmem -run $1 -v $(go list ./... | grep -v '\/vendor\/\|\/examples\/')
 }
+
+function sync-disks {
+    rsync -avr --times --delete --exclude=/\.Spotlight/ --exclude=/\.Trashes/ /Volumes/JS-$1/ /Volumes/JS-$1-Backup/
+}
