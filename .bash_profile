@@ -6,6 +6,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="./.bundle/bin:$PATH"
 export EDITOR=vim
 export GOPATH="/Users/jelmersnoeck/Projects/goprojects"
+export HOMEBREW_NO_ANALYTICS=1
 export PATH=$PATH:$GOPATH/bin
 export GO15VENDOREXPERIMENT=1
 
