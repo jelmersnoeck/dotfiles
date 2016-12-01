@@ -27,6 +27,7 @@ brew install tmux
 brew install reattach-to-user-namespace
 brew install ctags
 brew install wget
+brew install watch
 brew install ag
 brew install ctags-exuberant
 brew install qt
