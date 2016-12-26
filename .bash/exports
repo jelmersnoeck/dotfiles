@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Set OS type
+export OS=`uname -s`
+
+# Path
+export PATH="$HOME/.bin:$PATH"
+export PATH=$PATH:/usr/local/sbin
+export PATH=/usr/local/share/npm/bin:$PATH
+export PATH="./.bundle/bin:$PATH"
+
+# Disable Homebrew analytics gathering
+export HOMEBREW_NO_ANALYTICS=1
+
+# Set up editor to Vim
+export EDITOR='vim';
+
+# Golang exports
+export GOPATH="/Users/jelmersnoeck/Projects/goprojects"
+export PATH=$PATH:$GOPATH/bin

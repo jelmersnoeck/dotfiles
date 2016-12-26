@@ -9,8 +9,12 @@
     bare = false
     logallrefupdates = true
     ignorecase = false
-    excludesfile = ~/.gitignore
+
+    # Edit everything with vim
     editor = vim
+
+    # Global ignore file
+    excludesfile = ~/.gitignore
 
 [merge]
     tool = vimdiff
@@ -112,10 +116,13 @@
     merge-to = "!source ~/.githelpers && git_merge_to"
 
 [color]
-    ui = true
+    ui = auto
+
 [init]
     templatedir = ~/.git_template
+
 [heroku]
     account = personal
+
 [commit]
     gpgsign = true

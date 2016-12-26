@@ -2,9 +2,6 @@
 alias irc='ssh -t irssi screen -dr'
 alias dirc='ssh -D 2001 -t irssi screen -dr'
 
-# SOPHOS FFS
-alias freedom='while true; do sudo killall SophosWebIntelligence; sleep 1; done'
-
 # Overwrite `cd` command so it always follows symlinks.
 alias cd='cd -P'
 
@@ -18,12 +15,7 @@ alias vc='cd ~/.vimconfig'
 alias df='cd ~/.dotfiles'
 
 # General
-alias o='open'
 alias cl='clear'
-alias myip='curl ifconfig.me/ip'
-
-# Glide deveopment
-alias gld='/Users/jelmersnoeck/Projects/goprojects/src/github.com/masterminds/glide/glide'
 
 # Git
 alias ga='git aa'
@@ -54,11 +46,13 @@ alias grs='git reset'
 alias grsa='grs .'
 alias gd='git diff'
 alias gdc='git dc'
-alias hc='hub compare'
-alias hp='hub pull-request -o'
 alias gcr='git-create-remote'
 alias gstl='git stash list'
 alias gst='git stash -u'
+
+# GitHub shortcuts
+alias hc='hub compare'
+alias hp='hub pull-request -o'
 
 # Rails
 alias rg='rails g'
@@ -91,10 +85,6 @@ alias gg="glide get -u"
 alias gu='rm -rf vendor/ && glide up --force'
 alias gorm='go run main.go'
 
-# Docker
-alias dos='docker-machine start default && doi'
-alias doi='eval "$(docker-machine env default)"'
-
 # Heroku
 alias hk='heroku'
 alias hkp='heroku accounts:set personal'
@@ -108,10 +98,10 @@ alias mt='make test'
 # iOS Simulator
 alias iossimulator="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
 
-# JS
+# JS Console
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc'
 
-# Ctags
+# Build ctags
 alias bctags='ctags -R --exclude=.svn --exclude=.git --exclude=log *'
 
 # Easily resource all your files

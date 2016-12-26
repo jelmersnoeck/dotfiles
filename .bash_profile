@@ -1,19 +1,5 @@
-# Set paths.
-export PATH="$HOME/.bin:$PATH"
-export PATH=$PATH:/usr/local/sbin
-export PATH=/usr/local/share/npm/bin:$PATH
-export PATH="./.bundle/bin:$PATH"
-export EDITOR=vim
-export GOPATH="/Users/jelmersnoeck/Projects/goprojects"
-export HOMEBREW_NO_ANALYTICS=1
-export PATH=$PATH:$GOPATH/bin
-export GO15VENDOREXPERIMENT=1
-
-# Set the OS
-export OS=`uname -s`
-
 # load the dotfile files.
-for file in ~/.bash/{development,aliases,shell,commands,prompt,.git-completion.bash}; do
+for file in ~/.bash/{exports,development,aliases,shell,commands,prompt,.git-completion.bash}; do
     [ -r "$file" ] && source "$file";
 done;
 unset file;
@@ -21,13 +7,11 @@ unset file;
 # Aliasing
 __git_complete gco _git_checkout
 
+# Load machine specific functionality
 if [ ! -f ~/.bash_extra ]; then
     touch ~/.bash_extra
 fi
 source ~/.bash_extra
-
-# Postgress host
-export PGHOST=localhost
 
 # Don't ask for GPG passphrase every time.
 # https://github.com/pstadler/keybase-gpg-github

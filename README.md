@@ -7,7 +7,7 @@ To install my dotfiles, run the following:
 ## Apps
 To install default apps:
 
-`./.brew`
+`./install/.brew`
 
 ##Credits
 Credits to @janmoesen & @davelens for some of their scripts.
