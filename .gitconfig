@@ -1,7 +1,7 @@
 [user]
     name = Jelmer Snoeck
     email = jelmer.snoeck@gmail.com
-    signingkey = A6DD9576
+    signingkey = 77672CC8
 
 [core]
     repositoryformatversion = 0
