@@ -74,6 +74,7 @@ sudo pip install passlib
 brew install brew-cask
 brew cask install xquartz
 brew cask install google-chrome
+brew cask install google-drive
 brew cask install firefox
 brew cask install 1password
 brew cask install dropbox
