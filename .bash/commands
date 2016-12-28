@@ -292,3 +292,9 @@ function gtr {
 function sync-disks {
     rsync -avr --times --delete --exclude=/\.Spotlight/ --exclude=/\.Trashes/ /Volumes/JS-$1/ /Volumes/JS-$1-Backup/
 }
+
+# this will import the gpg keys from keybase and set them up in our gpg agent
+function import-gpg {
+    keybase pgp export -q $1 | gpg --import
+    keybase pgp export -q $1 --secret | gpg --allow-secret-key-import --import
+}
