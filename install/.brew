@@ -72,6 +72,7 @@ sudo pip install passlib
 
 # Cask applications
 brew install brew-cask
+brew cask install xquartz
 brew cask install google-chrome
 brew cask install firefox
 brew cask install 1password
@@ -86,6 +87,9 @@ brew cask install docker
 brew cask install fantastical
 brew cask install sizeup
 brew cask install zoomus
+
+# diff-pdf needs quartz to be installed
+brew install diff-pdf
 
 # Firefox socks
 # https://www.mikeash.com/ssh_socks.html
