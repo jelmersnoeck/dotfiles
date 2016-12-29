@@ -90,7 +90,9 @@ brew cask install fantastical
 brew cask install sizeup
 brew cask install zoomus
 brew cask install caffeine
+
 brew cask install utorrent
+open /usr/local/Caskroom/utorrent/latest/uTorrent.app
 
 # diff-pdf needs quartz to be installed
 brew install diff-pdf
