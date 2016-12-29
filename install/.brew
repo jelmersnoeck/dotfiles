@@ -51,6 +51,7 @@ brew install httpie
 brew install protobuf
 brew install bzr
 brew install glide
+brew install hub
 brew install libgit2 --with-libssh2
 
 # Go binaries
