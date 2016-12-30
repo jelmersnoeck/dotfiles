@@ -18,3 +18,6 @@ export EDITOR='vim';
 # Golang exports
 export GOPATH="/Users/jelmersnoeck/Projects/goprojects"
 export PATH=$PATH:$GOPATH/bin
+
+# CDPATH allows you to easily cd into paths without having to type the full path
+export CDPATH=.:$HOME:$GOPATH/src:$GOPATH/src/golang.org:$GOPATH/src/github.com:
