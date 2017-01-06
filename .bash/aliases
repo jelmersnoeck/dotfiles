@@ -14,10 +14,6 @@ alias tnz='tmux new -s zocial'
 alias vc='cd ~/.vimconfig'
 alias df='cd ~/.dotfiles'
 
-# Vim with logging
-alias vim='vim -w ~/.vimlog "$@"'
-alias vi=vim
-
 # Keybase
 alias kb='keybase'
 
@@ -98,6 +94,12 @@ alias hkp='heroku accounts:set personal'
 alias hkw='heroku accounts:set work'
 alias hkt='heroku logs --tail'
 alias hkc='heroku run rails c'
+
+# Docker
+alias dka='docker kill $(docker ps -q)'
+alias drma='docker rm -f $(docker ps -aq)'
+alias dcv='printf "\n>>> Deleting unused volumes\n\n" && docker volume rm $(docker volume ls -qf dangling=true)'
+alias de='docker exec'
 
 # Make
 alias mt='make test'

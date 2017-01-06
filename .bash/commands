@@ -298,3 +298,46 @@ function import-gpg {
     keybase pgp export -q $1 | gpg --import
     keybase pgp export -q $1 --secret | gpg --allow-secret-key-import --import
 }
+
+# wh will open the work hour logs for the specified company
+function wh {
+    vi ~/Dropbox/Work/Siphoc\ BVBA/Work\ Logs/$1
+}
+
+# when an argument is given to dps it will grep for that argument in the
+# `docker ps` list, if none is given it will show all results.
+function dps {
+  if [[ $# > 0 ]]; then
+      docker ps | grep $@
+  else
+      docker ps
+  fi
+}
+
+# when an argument is given to dpsa it will grep for that argument in the
+# `docker ps -a` list, if none is given it will show all results.
+function dpsa {
+  if [[ $# > 0 ]]; then
+      docker ps -a | grep $@
+  else
+      docker ps -a
+  fi
+}
+
+# deb executes bash interactively on the given container id
+function deb {
+    docker exec -it $1 bash
+}
+
+# dips is the representation of `docker ps` but it adds a column of IP addresses
+function dips {
+    docker ps | while read line; do
+        if `echo $line | grep -q 'CONTAINER ID'`; then
+            echo -e "IP ADDRESS\t$line"
+        else
+            CID=$(echo $line | awk '{print $1}');
+            IP=$(docker inspect -f "{{ .NetworkSettings.IPAddress }}" $CID);
+            printf "${IP}\t${line}\n"
+        fi
+    done;
+}
