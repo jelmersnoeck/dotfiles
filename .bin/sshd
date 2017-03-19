@@ -1,0 +1,73 @@
+#!/bin/bash
+# Based off of http://kpumuk.info/mac-os-x/how-to-show-ssh-host-name-on-the-iterms-background/
+# SSH with host name and IP address in background (only in iTerm.app)
+## Customize!
+BG_COLOR="#ededed"       # Background color (dark theme)
+FG_COLOR="#005f00"       # Foreground color (dark theme)
+GRAVITY="NorthEast"                           # Text gravity (NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast)
+OFFSET1="20,10"                               # Text offset
+OFFSET2="20,50"                               # Text offset
+FONT_SIZE="50"                                # Font size in points
+FONT_STYLE="Normal"                           # Font style (Any, Italic, Normal, Oblique)
+FONT="/Library/Fonts/Verdana.ttf"
+###################
+# First, check to see if we have the correct terminal!
+if [ "$(tty)" == 'not a tty' ] || [ "$TERM_PROGRAM" != "iTerm.app" ] ; then
+    /usr/bin/ssh "$@"
+    exit $?
+fi
+function __set_color() {
+    local color="${FG_COLOR}"
+    if [[ "$1" =~ prod ]]; then
+        color="#ff0000"
+    fi
+    echo "${color}"
+}
+function __calculate_iterm_window_dimensions {
+    # This does -NOT- yet work in Lion's full screen.  Dimensions are way off.
+    local size=( $(osascript -e "tell application \"iTerm\"
+        get bounds of window 1
+        end tell" | tr ',' ' ') )
+    local x1=${size[0]} y1=${size[1]} x2=${size[2]} y2=${size[3]}
+    # 15px - scrollbar width
+    local w=$(( $x2 - $x1 - 15 ))
+    # 44px - titlebar + tabs height
+    local h=$(( $y2 - $y1 - 44))
+    echo "${w}x${h}"
+}
+# Console dimensions
+DIMENSIONS=$(__calculate_iterm_window_dimensions)
+HOSTNAME=`echo $@ | sed -e "s/.*@//" -e "s/ .*//"`
+output=`dscacheutil -q host -a name $HOSTNAME`
+RESOLVED_HOSTNAME=`echo -e "$output"|grep '^name:'|awk '{print $2}'`
+RESOLVED_IP=`echo -e "$output"|grep '^ip_address:'|awk '{print $2}'`
+function set_bg {
+    local tty=$(tty)
+    osascript -e "
+        tell application \"iTerm\"
+            tell current session of current window
+                set background image to \"$1\"
+            end tell
+        end tell"
+}
+on_exit () {
+    if [ ! -f /tmp/iTermBG.empty.png ]; then
+        convert -size "$DIMENSIONS" xc:"$BG_COLOR" "/tmp/iTermBG.empty.png"
+    fi
+    set_bg "/tmp/iTermBG.empty.png"
+    rm "/tmp/iTermBG.$$.png"
+}
+trap on_exit EXIT
+# Create the background
+FG_COLOR=$(__set_color "$@")
+convert \
+    -size "$DIMENSIONS" xc:"$BG_COLOR" -gravity "$GRAVITY" -fill "$FG_COLOR" -font "$FONT" -style "$FONT_STYLE" -pointsize "$FONT_SIZE" \
+    -antialias -draw "text $OFFSET1 '${RESOLVED_HOSTNAME:-$HOSTNAME}'" -pointsize 20 -draw "text $OFFSET2 '${RESOLVED_IP:-}'" -alpha Off \
+    "/tmp/iTermBG.$$.png"
+set_bg "/tmp/iTermBG.$$.png"
+# Set the tab title to the command line we passed
+echo -ne "\033]0;"$@"\007"
+# Run the real ssh
+/usr/bin/ssh "$@"
+# Reset the tab title to be the current shell on exit
+echo -ne "\033]0;$SHELL\007"
