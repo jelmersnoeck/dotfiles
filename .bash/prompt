@@ -1,7 +1,27 @@
+#!/bin/bash
+
 # if git is installed, show the branch we're currently working in
 type -t git > /dev/null \
-    && __prompt_vcs_string='$(git-show-branch)' \
+    && __prompt_vcs_string='$(git-branch-prompt)' \
     || __prompt_vcs_string='';
 
 # set our prompt
-export PS1="${FG_YELLOW}\W${FG_RED}($__prompt_vcs_string)\e[m\n";
+export PS1="${FG_BLUE}\W${FG_RED}$__prompt_vcs_string\e[m\n";
+
+function git-branch-prompt {
+    local branch=$(git-show-branch);
+    if [ "${branch}" != "" ]
+    then
+        echo ":${branch}:$(git-changes)";
+    fi
+}
+
+function git-changes {
+    local num=$(git status --short | wc -l)
+    if [ ${num} != 0 ]
+    then
+        echo "${FG_RED}✗"
+    else
+        echo "${FG_GREEN}✔"
+    fi
+}
