@@ -12,6 +12,7 @@ unset method;
 ssh-load-autocomplete()
 {
     complete -W "$(awk '/^\s*Host\s*/ { sub(/^\s*Host /, ""); print; }' ~/.ssh/config)" ssh
+    complete -W "$(awk '/^\s*Host\s*/ { sub(/^\s*Host /, ""); print; }' ~/.ssh/config)" sshd
 }
 
 # Start the autocomplete when our bash starts
@@ -327,6 +328,11 @@ function dpsa {
 # deb executes bash interactively on the given container id
 function deb {
     docker exec -it $1 bash
+}
+
+# drb runs bash interactivly on the given container image
+function drb {
+    docker run --rm -it $1 bash
 }
 
 # dips is the representation of `docker ps` but it adds a column of IP addresses
