@@ -294,6 +294,12 @@ function sync-disks {
     rsync -avr --times --delete --exclude=/\.Spotlight/ --exclude=/\.Trashes/ /Volumes/JS-$1/ /Volumes/JS-$1-Backup/
 }
 
+# sync-disks will sync hard drives with rsync, this is used for backing up one
+# hard drive to another with the same naming convention.
+function dry-sync-disks {
+    rsync --dry-run -avr --times --delete --exclude=/\.Spotlight/ --exclude=/\.Trashes/ /Volumes/JS-$1/ /Volumes/JS-$1-Backup/
+}
+
 # this will import the gpg keys from keybase and set them up in our gpg agent
 function import-gpg {
     keybase pgp export -q $1 | gpg --import
@@ -346,4 +352,9 @@ function dips {
             printf "${IP}\t${line}\n"
         fi
     done;
+}
+
+# Manifold behaviour
+function gdr {
+    make docker-$1 && tdcu $1 && dcp logs -f $1
 }

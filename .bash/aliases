@@ -106,7 +106,11 @@ alias dka='docker kill $(docker ps -q)'
 alias drma='docker rm -f $(docker ps -aq)'
 alias dcv='printf "\n>>> Deleting unused volumes\n\n" && docker volume rm $(docker volume ls -qf dangling=true)'
 alias de='docker exec'
+alias dcp='docker-compose'
 alias dcu='docker-compose up'
+
+# Torus
+alias tdcu="torus run -- docker-compose up -d"
 
 # Make
 alias mt='make test'
