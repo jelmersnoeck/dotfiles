@@ -22,6 +22,9 @@ alias cl='clear'
 # Ansible
 alias ap='ansible-playbook'
 
+# Kubernetes
+alias kc='kubectl'
+
 # Git
 alias ga='git aa'
 alias gcom='git checkout master' # See .bash_profile for autocomplete
