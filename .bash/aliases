@@ -12,7 +12,6 @@ alias tnz='tmux new -s zocial'
 
 # Shortcuts
 alias vc='cd ~/.vimconfig'
-alias df='cd ~/.dotfiles'
 
 # Keybase
 alias kb='keybase'
