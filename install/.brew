@@ -58,6 +58,7 @@ brew install terraform
 brew install certbot
 brew tap go-swagger/go-swagger
 brew install go-swagger
+brew install jq
 
 # Go binaries
 brew install go
