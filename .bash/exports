@@ -16,7 +16,7 @@ export HOMEBREW_NO_ANALYTICS=1
 export EDITOR='vim';
 
 # Golang exports
-export GOPATH="/Users/jelmersnoeck/Projects/goprojects"
+export GOPATH="/Users/jelmersnoeck/go"
 export PATH=$PATH:$GOPATH/bin
 
 # CDPATH allows you to easily cd into paths without having to type the full path

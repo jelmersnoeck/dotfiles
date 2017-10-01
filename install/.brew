@@ -45,7 +45,6 @@ brew install gpg-agent
 brew install pinentry-mac
 brew install tree
 brew tap homebrew/services
-brew install heroku-toolbelt
 brew install Goles/battery/battery
 brew install httpie
 brew install protobuf
@@ -59,10 +58,10 @@ brew install certbot
 brew tap go-swagger/go-swagger
 brew install go-swagger
 brew install jq
+brew install kubectl
 
 # Go binaries
 brew install go
-mkdir -p ~/Projects/goprojects
 go get github.com/heroku/hk
 go get golang.org/x/tools/cmd/goimports
 go get github.com/vektra/mockery/.../
@@ -82,7 +81,6 @@ brew install brew-cask
 brew cask install xquartz
 brew cask install google-chrome
 brew cask install google-drive
-brew cask install skype
 brew cask install firefox
 brew cask install 1password
 brew cask install dropbox
@@ -93,23 +91,16 @@ brew cask install vlc
 brew cask install whatsapp
 brew cask install alfred
 brew cask install docker
-brew cask install fantastical
 brew cask install sizeup
 brew cask install zoomus
 brew cask install caffeine
 brew cask install virtualbox
 brew cask install spark
 brew cask install harvest
-
 brew cask install utorrent
-open /usr/local/Caskroom/utorrent/latest/uTorrent.app
-
-# diff-pdf needs quartz to be installed
-brew install diff-pdf
-
-# Kubernetes
-curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl
-curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.16.0/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+brew cask install little-snitch
+brew cask install minikube
+brew cask install google-cloud-sdk
 
 # Firefox socks
 # https://www.mikeash.com/ssh_socks.html
