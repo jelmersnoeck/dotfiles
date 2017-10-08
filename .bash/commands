@@ -356,7 +356,7 @@ function dips {
 
 # Manifold behaviour
 function gdr {
-    make docker-$1 && tdcu $1 && dcp logs -f $1
+    rm build/docker/$1/bin/$1 || echo "" && make docker-$1 && tdcu $1 && clear && dcp logs -f $1
 }
 
 ##################################
