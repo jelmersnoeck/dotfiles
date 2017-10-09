@@ -1,0 +1,42 @@
+# !/bin/bash
+
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+#######################
+# General 
+#######################
+
+# Disable the sound effects on boot
+sudo nvram SystemAudioVolume=" "
+
+# Set sidebar icon size to small
+sudo defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
+
+# Set the dock on the left side
+sudo defaults write com.apple.Dock orientation -string LEFT
+
+# Disable Guest User
+sudo defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool NO
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool NO
+
+#################
+# User Input
+################
+
+# Set a blazingly fast keyboard repeat rate
+sudo defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+sudo defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+
+# Kill affected applications
+for app in "Activity Monitor" \
+	"Dock" \
+	"Finder"; do
+	killall "${app}" &> /dev/null
+done
