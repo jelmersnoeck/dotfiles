@@ -15,9 +15,13 @@ source ~/.bash_extra
 
 # Don't ask for GPG passphrase every time.
 # https://github.com/pstadler/keybase-gpg-github
-if test -f ~/.gnupg/.gpg-agent-info -a -n "$(pgrep gpg-agent)"; then
-    source ~/.gnupg/.gpg-agent-info
-    export GPG_AGENT_INFO
-else
-    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+# This will check if there is a daemon running with the correct configuration
+# options. If not, it will check if the daemon is running and kill it if so
+# whilst also reloading the default gpg-agent config.
+if [[ ! $(ps aux | grep gpg-agent | grep daemon | grep options) ]]; then
+    # Kill the agent if one exists
+    if [[ $(ps aux | grep gpg-agent | grep daemon) ]]; then
+        kill $(ps aux | grep gpg-agent | grep daemon | tr -s " " | awk '{print $2}')
+    fi
+    gpg-agent --daemon --options ~/.gnupg/gpg-agent.conf
 fi

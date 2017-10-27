@@ -354,9 +354,18 @@ function dips {
     done;
 }
 
+# make_targets shows all targets for a make file
+function make_targets {
+    make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}' | grep -v Makefile
+}
+
 # Manifold behaviour
 function gdr {
     rm build/docker/$1/bin/$1 || echo "" && make docker-$1 && tdcu $1 && clear && dcp logs -f $1
+}
+
+function mdb {
+    dcp exec pg psql postgres://arigato:arigato@localhost:5432/$1
 }
 
 ##################################

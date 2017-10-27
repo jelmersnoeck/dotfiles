@@ -1,0 +1,4 @@
+#!/System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/ruby
+
+require 'open-uri'
+File.write("/tmp/install-dotfiles", open("https://raw.githubusercontent.com/jelmersnoeck/dotfiles/master/install2/.brew").read)
