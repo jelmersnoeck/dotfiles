@@ -87,6 +87,9 @@ brew install kubectl
 
 brew install figlet
 
+# DigitalOcean
+brew install doctl
+
 brew install yarn --without-node
 
 # Tmux + dependencies
