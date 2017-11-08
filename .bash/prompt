@@ -6,7 +6,7 @@ type -t git > /dev/null \
     || __prompt_vcs_string='';
 
 # set our prompt
-export PS1="${FG_BLUE}\W${FG_RED}$__prompt_vcs_string\e[m\n";
+export PS1="${FG_YELLOW}\h:${FG_BLUE}\W${FG_RED}$__prompt_vcs_string\e[m\n";
 
 function git-branch-prompt {
     local branch=$(git-show-branch);

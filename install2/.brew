@@ -56,6 +56,7 @@ brew install grep
 brew install ag
 brew install watch
 brew install certbot
+brew install graphviz
 
 ####################
 # Go               #
@@ -92,6 +93,10 @@ brew install doctl
 
 brew install yarn --without-node
 
+# Manifold
+brew install manifoldco/brew/torus
+brew install manifoldco/brew/manifold-cli
+
 # Tmux + dependencies
 brew install tmux
 brew install reattach-to-user-namespace
@@ -106,6 +111,10 @@ brew install tree
 # gpg
 brew install gpg
 brew install sinentry-mac
+
+# JavaScript
+brew install npm
+brew install yarn
 
 # Ruby
 if ! hash rbenv 2>/dev/null; then
@@ -160,3 +169,5 @@ brew cask install google-cloud-sdk
 brew cask install docker
 brew cask install keybase
 brew cask install appcleaner
+brew cask install iterm2
+brew cask install google-backup-and-sync
