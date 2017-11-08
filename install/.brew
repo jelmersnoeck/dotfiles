@@ -57,6 +57,7 @@ brew install ag
 brew install watch
 brew install certbot
 brew install graphviz
+brew install dnsmasq
 
 ####################
 # Go               #
