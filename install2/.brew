@@ -171,3 +171,4 @@ brew cask install keybase
 brew cask install appcleaner
 brew cask install iterm2
 brew cask install google-backup-and-sync
+brew cask install postman
