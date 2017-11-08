@@ -1,67 +1,69 @@
-#!/usr/bin/env bash
+# !/bin/bash
 
-xcode-select install
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# Make sure our ssh configuration is set up correctly
+if [ ! -d "$HOME/.ssh" ]; then
+    echo "Install your ssh credentials first"
+    exit
+else
+    chmod 0600 ~/.ssh/config
+    chmod 0600 ~/.ssh/id_rsa
+    ssh-add -K ~/.ssh/id_rsa
+fi
 
-touch ~/.bash_profile
-source ~/.bash_profile
+# Sudo user
+sudo -v
 
-# Brew
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Install homebrew if it isn't installed already
+brew --version || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# Update homebrew
 brew update
+
+# Install latests versions
 brew upgrade
 
-# Install core utils, Mac OS X is outdated
+####################
+# Core             #
+####################
 brew install coreutils
 brew install findutils
+brew install gnu-sed --with-default-names
+
+####################
+# Bash             #
+####################
+
+# Install our own bash
 brew install bash
-brew install vim
+brew install bash-completion2
 
-# Git
-brew install git
+# Switch to using brew-installed bash as default shell
+if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
+  echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
+  chsh -s /usr/local/bin/bash;
+fi;
 
-# Vim config
-git clone https://github.com/jelmersnoeck/vimconfig.git ~/.vimconfig && cd ~/.vimconfig && sh ./install.sh
+####################
+# Tools            #
+####################
 
-# Dotfiles
-git clone https://github.com/jelmersnoeck/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && sh ./install/install.sh
-source ~/.bashrc
-
-# Tmux + dependency
-brew install tmux
-brew install reattach-to-user-namespace
-brew install ctags
-brew install wget
-brew install keybase
-brew install watch
+brew install vim --with-override-system-vi
+brew install wget --with-iri
+brew install grep
 brew install ag
-brew install ctags-exuberant
-brew install qt
-brew wkhtmltopdf
-brew install imagemagick
-brew install ghostscript
-brew install hg
-brew install gpg
-brew install gpg-agent
-brew install pinentry-mac
-brew install tree
-brew tap homebrew/services
-brew install Goles/battery/battery
-brew install httpie
-brew install protobuf
-brew install bzr
-brew install glide
-brew install hub
-brew install libgit2 --with-libssh2
-brew install htop
-brew install terraform
+brew install watch
 brew install certbot
-brew tap go-swagger/go-swagger
-brew install go-swagger
-brew install jq
-brew install kubectl
+brew install graphviz
 
-# Go binaries
+####################
+# Go               #
+####################
 brew install go
+brew install glide
+brew install dep
 go get github.com/heroku/hk
 go get golang.org/x/tools/cmd/goimports
 go get github.com/vektra/mockery/.../
@@ -70,23 +72,87 @@ go get gopkg.in/matm/v1/gocov-html
 go get github.com/golang/lint/golint
 go get github.com/kisielk/errcheck
 go get github.com/jteeuwen/go-bindata
+go get golang.org/x/tools/cmd/present
 
-# ansible
-sudo easy_install pip
-sudo pip install ansible
-sudo pip install passlib
+####################
+# Developer Tools  #
+####################
+brew install git
+brew install git-lfs
+brew install hub
 
-# Cask applications
-brew install brew-cask
-brew cask install xquartz
+brew install terraform
+
+brew install docker
+brew install kubectl
+
+brew install figlet
+
+# DigitalOcean
+brew install doctl
+
+brew install yarn --without-node
+
+# Manifold
+brew install manifoldco/brew/torus
+brew install manifoldco/brew/manifold-cli
+
+# Tmux + dependencies
+brew install tmux
+brew install reattach-to-user-namespace
+brew install ctags
+
+# Pretty JSON output
+brew install jq
+
+# Tree view of a directory
+brew install tree
+
+# gpg
+brew install gpg
+brew install sinentry-mac
+
+# JavaScript
+brew install npm
+brew install yarn
+
+# Ruby
+if ! hash rbenv 2>/dev/null; then
+    RUBY_VERSION=2.4.2
+    brew install ruby
+    rbenv install $RUBY_VERSION
+    rbenv global $RUBY_VERSION
+    gem install tmuxinator
+    gem install travis -v 1.8.8 --no-rdoc --no-ri
+fi
+
+####################
+# Config           #
+####################
+
+# Vim config
+if [ ! -d "$HOME/.vimconfig" ]; then
+	git clone https://github.com/jelmersnoeck/vimconfig.git ~/.vimconfig && cd ~/.vimconfig && sh ./install.sh && cd -
+fi
+
+# Dotfiles
+if [ ! -d "$HOME/.dotfiles" ]; then
+	git clone https://github.com/jelmersnoeck/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && sh ./install/install.sh && cd -
+	source ~/.bashrc
+fi
+
+####################
+# Desktop Apps     #
+####################
+
+brew install brew-cask-completion
 brew cask install google-chrome
-brew cask install google-drive
+brew cask install google-hangouts
 brew cask install firefox
 brew cask install 1password
 brew cask install dropbox
 brew cask install spotify
 brew cask install slack
-brew cask install iterm2
 brew cask install vlc
 brew cask install whatsapp
 brew cask install alfred
@@ -95,12 +161,14 @@ brew cask install sizeup
 brew cask install zoomus
 brew cask install caffeine
 brew cask install virtualbox
-brew cask install spark
 brew cask install harvest
-brew cask install utorrent
 brew cask install little-snitch
+open /usr/local/Caskroom/little-snitch/4.0.3/LittleSnitch-4.0.3.dmg
 brew cask install minikube
 brew cask install google-cloud-sdk
-
-# Firefox socks
-# https://www.mikeash.com/ssh_socks.html
+brew cask install docker
+brew cask install keybase
+brew cask install appcleaner
+brew cask install iterm2
+brew cask install google-backup-and-sync
+brew cask install postman
