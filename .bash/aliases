@@ -23,7 +23,11 @@ alias cl='clear'
 alias ap='ansible-playbook'
 
 # Kubernetes
-alias kc='kubectl'
+alias k='kubectl'
+alias mks='minikube start --vm-driver=xhyve'
+
+# Manifold
+alias m='manifold'
 
 # Git
 alias ga='git aa'
