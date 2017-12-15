@@ -182,4 +182,3 @@ brew cask install google-backup-and-sync
 brew cask install postman
 brew cask install ngrok
 brew cask install java
-brew cask install lifesize
