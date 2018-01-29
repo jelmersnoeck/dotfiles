@@ -1,5 +1,5 @@
 # load the dotfile files.
-for file in ~/.bash/{exports,development,aliases,shell,commands,prompt,.git-completion.bash}; do
+for file in ~/.bash/{exports,development,aliases,shell,commands,kube-ps1,prompt,.git-completion.bash}; do
     [ -r "$file" ] && source "$file";
 done;
 unset file;
@@ -25,3 +25,11 @@ if [[ ! $(ps aux | grep gpg-agent | grep daemon | grep options) ]]; then
     fi
     gpg-agent --daemon --options ~/.gnupg/gpg-agent.conf
 fi
+export PATH="$PATH:./node_modules/"
+
+export KUBE_PS1_NS_ENABLE=false
+# Load prompt after all others have been loaded
+for file in ~/.bash/{kube-ps1,prompt}; do
+    [ -r "$file" ] && source "$file";
+done;
+unset file;

@@ -91,8 +91,11 @@ sudo pip install ansible
 
 brew install docker
 brew install kubectl
+brew install kubectx
 curl -L https://github.com/kubernetes/kompose/releases/download/v1.4.0/kompose-darwin-amd64 -o /usr/local/bin/kompose
 chmod 0777 /usr/local/bin/kompose
+brew tap johanhaleby/kubetail && brew install kubetail
+brew install kubernetes-helm
 
 brew install figlet
 

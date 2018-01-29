@@ -107,7 +107,7 @@ alias hkt='heroku logs --tail'
 alias hkc='heroku run rails c'
 
 # Docker
-alias dk='docker'
+alias d='docker'
 alias dka='docker kill $(docker ps -q)'
 alias drma='docker rm -f $(docker ps -aq)'
 alias dcv='printf "\n>>> Deleting unused volumes\n\n" && docker volume rm $(docker volume ls -qf dangling=true)'

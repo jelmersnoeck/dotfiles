@@ -377,3 +377,14 @@ function mdb {
 function kcdr {
     kubectl patch deployment $1 -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
 }
+
+# msc will switch the context files for manifold to a local setup
+function msc {
+    rm ~/.manifoldrc || true
+
+    if [[ $1 == "l" ]]; then
+        cp ~/.manifoldrc.local ~/.manifoldrc
+    else
+        cp ~/.manifoldrc.remote ~/.manifoldrc
+    fi
+}
