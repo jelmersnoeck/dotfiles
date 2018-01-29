@@ -375,7 +375,7 @@ function mdb {
 # kcdr will force reload a deployment by re-annotating the metadata with the
 # current timestamp.
 function kcdr {
-    kubectl patch deployment $1 -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
+    kubectl patch deployment $@ -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
 }
 
 # msc will switch the context files for manifold to a local setup
