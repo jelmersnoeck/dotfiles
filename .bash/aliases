@@ -24,7 +24,10 @@ alias ap='ansible-playbook'
 
 # Kubernetes
 alias k='kubectl'
-alias mks='minikube start --vm-driver=xhyve'
+alias ka='k apply -f'
+alias kl='k logs -f'
+alias kp='k get pods'
+alias kd='k get deploy'
 
 # Manifold
 alias m='manifold'
