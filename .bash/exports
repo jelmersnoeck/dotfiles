@@ -21,3 +21,6 @@ export PATH=$PATH:$GOPATH/bin
 
 # CDPATH allows you to easily cd into paths without having to type the full path
 export CDPATH=.:$HOME:$GOPATH/src:$GOPATH/src/golang.org:$GOPATH/src/github.com:
+
+# grep
+export GREP_OPTIONS='--color=auto'
