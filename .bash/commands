@@ -378,6 +378,16 @@ function kcdr {
     kubectl patch deployment $@ -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
 }
 
+# kcdra will force reload all deployments in a specific namespace.
+function kcdra {
+    namespace=$1
+    if [[ $namespace == "" ]]; then
+        namespace="default"
+    fi
+
+    k get deploy -n $namespace | grep -v NAME | cut -d' ' -f1 | xargs -I {} kubectl patch deployment {} -n $namespace -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
+}
+
 # msc will switch the context files for manifold to a local setup
 function msc {
     rm ~/.manifoldrc || true
