@@ -1,7 +1,7 @@
 [user]
     name = Jelmer Snoeck
     email = jelmer@siphoc.com
-    signingkey = B84149AE77672CC8
+    signingkey = C8C02ED097D5725E
 
 [core]
     repositoryformatversion = 0
@@ -127,4 +127,4 @@
 [commit]
     gpgsign = true
 [gpg]
-	program = /usr/local/bin/gpg
+	program = gpg
