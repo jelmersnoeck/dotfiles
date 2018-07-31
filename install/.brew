@@ -63,9 +63,7 @@ brew install dnsmasq
 # Go               #
 ####################
 brew install go
-brew install glide
 brew install dep
-go get github.com/heroku/hk
 go get golang.org/x/tools/cmd/goimports
 go get github.com/vektra/mockery/.../
 go get github.com/axw/gocov/gocov
@@ -96,13 +94,12 @@ curl -L https://github.com/kubernetes/kompose/releases/download/v1.4.0/kompose-d
 chmod 0777 /usr/local/bin/kompose
 brew tap johanhaleby/kubetail && brew install kubetail
 brew install kubernetes-helm
+brew install kops
 
 brew install figlet
 
 # DigitalOcean
 brew install doctl
-
-brew install yarn --without-node
 
 # Manifold
 brew install manifoldco/brew/torus
@@ -120,22 +117,13 @@ brew install jq
 brew install tree
 
 # gpg
-brew install gpg
-brew install sinentry-mac
+brew install gnupg
+brew link --overwrite gnupg
+brew install pinentry-mac
 
 # JavaScript
 brew install npm
-brew install yarn
-
-# Ruby
-if ! hash rbenv 2>/dev/null; then
-    RUBY_VERSION=2.4.2
-    brew install ruby
-    rbenv install $RUBY_VERSION
-    rbenv global $RUBY_VERSION
-    gem install tmuxinator
-    gem install travis -v 1.8.8 --no-rdoc --no-ri
-fi
+brew install yarn --without-node
 
 ####################
 # Config           #
@@ -173,15 +161,12 @@ brew cask install zoomus
 brew cask install caffeine
 brew cask install virtualbox
 brew cask install harvest
-brew cask install little-snitch
-open /usr/local/Caskroom/little-snitch/4.0.3/LittleSnitch-4.0.3.dmg
 brew cask install minikube
 brew cask install google-cloud-sdk
-brew cask install docker
 brew cask install keybase
 brew cask install appcleaner
 brew cask install iterm2
 brew cask install google-backup-and-sync
 brew cask install postman
 brew cask install ngrok
-brew cask install java
+brew cask install divvy
