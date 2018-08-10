@@ -78,28 +78,19 @@ go get -u github.com/cweill/gotests/...
 ####################
 # Developer Tools  #
 ####################
+# Git
 brew install git
 brew install git-lfs
 brew install hub
 
+# Terraform
 brew install terraform
 brew install packer
 
-sudo easy_install pip
-sudo pip install ansible
-
-brew install docker
+# Kubernetes
 brew install kubectl
 brew install kubectx
-curl -L https://github.com/kubernetes/kompose/releases/download/v1.4.0/kompose-darwin-amd64 -o /usr/local/bin/kompose
-chmod 0777 /usr/local/bin/kompose
-brew tap johanhaleby/kubetail && brew install kubetail
-brew install kubernetes-helm
 brew install kops
-brew install figlet
-
-# DigitalOcean
-brew install doctl
 
 # Manifold
 brew install manifoldco/brew/manifold-cli
@@ -115,7 +106,7 @@ brew install jq
 # Tree view of a directory
 brew install tree
 
-# gpg
+# GPG
 brew install gnupg
 brew link --overwrite gnupg
 brew install pinentry-mac
@@ -143,7 +134,6 @@ fi
 ####################
 # Desktop Apps     #
 ####################
-
 brew install brew-cask-completion
 brew cask install google-chrome
 brew cask install google-hangouts
