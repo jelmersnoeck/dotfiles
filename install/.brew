@@ -73,6 +73,7 @@ go get github.com/kisielk/errcheck
 go get github.com/jteeuwen/go-bindata
 go get golang.org/x/tools/cmd/present
 go get github.com/schachmat/wego
+go get -u github.com/cweill/gotests/...
 
 ####################
 # Developer Tools  #
@@ -95,14 +96,12 @@ chmod 0777 /usr/local/bin/kompose
 brew tap johanhaleby/kubetail && brew install kubetail
 brew install kubernetes-helm
 brew install kops
-
 brew install figlet
 
 # DigitalOcean
 brew install doctl
 
 # Manifold
-brew install manifoldco/brew/torus
 brew install manifoldco/brew/manifold-cli
 
 # Tmux + dependencies
@@ -120,6 +119,7 @@ brew install tree
 brew install gnupg
 brew link --overwrite gnupg
 brew install pinentry-mac
+# keybase pgp export -s | gpg --allow-secret-key-import --import -
 
 # JavaScript
 brew install npm
@@ -164,9 +164,9 @@ brew cask install harvest
 brew cask install minikube
 brew cask install google-cloud-sdk
 brew cask install keybase
-brew cask install appcleaner
 brew cask install iterm2
 brew cask install google-backup-and-sync
 brew cask install postman
 brew cask install ngrok
 brew cask install divvy
+brew cask install flux
