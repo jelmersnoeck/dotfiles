@@ -70,7 +70,7 @@
     dc = diff --cached
 
     # Commit
-    ci = commit -S --verbose
+    ci = commit -S --verbose --signoff
 
     # Get pull request information from GitHub
     prs = fetch origin '+refs/pull/*/head:refs/pull/*'
