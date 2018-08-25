@@ -160,3 +160,5 @@ brew cask install postman
 brew cask install ngrok
 brew cask install divvy
 brew cask install flux
+brew cask install private-internet-access
+open /usr/local/Caskroom/private-internet-access/81/Private\ Internet\ Access\ Installer.app
