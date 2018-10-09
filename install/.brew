@@ -73,6 +73,7 @@ go get github.com/kisielk/errcheck
 go get github.com/jteeuwen/go-bindata
 go get golang.org/x/tools/cmd/present
 go get github.com/schachmat/wego
+go get github.com/sqs/goreturns
 go get -u github.com/cweill/gotests/...
 
 ####################
@@ -132,6 +133,18 @@ if [ ! -d "$HOME/.dotfiles" ]; then
 fi
 
 ####################
+# Kubernetes       #
+####################
+
+curl -sL https://run.linkerd.io/install | sh
+
+brew install kustomize
+brew install kubernetes-helm
+
+brew install jsonnet
+go get github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb
+
+####################
 # Desktop Apps     #
 ####################
 brew install brew-cask-completion
@@ -162,3 +175,5 @@ brew cask install divvy
 brew cask install flux
 brew cask install private-internet-access
 open /usr/local/Caskroom/private-internet-access/81/Private\ Internet\ Access\ Installer.app
+brew cask install homebrew/cask-drivers/garmin-express
+brew cask install visual-studio-code
