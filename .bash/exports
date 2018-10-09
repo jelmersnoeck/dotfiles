@@ -24,3 +24,5 @@ export CDPATH=.:$HOME:$GOPATH/src:$GOPATH/src/golang.org:$GOPATH/src/github.com:
 
 # grep
 export GREP_OPTIONS='--color=auto'
+
+export PATH=$PATH:$HOME/.linkerd2/bin
