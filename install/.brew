@@ -83,6 +83,7 @@ go get -u github.com/cweill/gotests/...
 brew install git
 brew install git-lfs
 brew install hub
+brew install hg
 
 # Terraform
 brew install terraform
