@@ -75,6 +75,7 @@ go get golang.org/x/tools/cmd/present
 go get github.com/schachmat/wego
 go get github.com/sqs/goreturns
 go get -u github.com/cweill/gotests/...
+go get -u github.com/rakyll/gotest
 
 ####################
 # Developer Tools  #
@@ -84,6 +85,15 @@ brew install git
 brew install git-lfs
 brew install hub
 brew install hg
+
+# Bazel
+brew tap bazelbuild/tap
+brew tap-pin bazelbuild/tap
+brew install bazelbuild/tap/bazel
+
+# Protobuf
+brew install protobuf
+go get -u github.com/golang/protobuf/protoc-gen-go
 
 # Terraform
 brew install terraform
@@ -96,6 +106,7 @@ brew install kops
 
 # Manifold
 brew install manifoldco/brew/manifold-cli
+brew install adr-tools
 
 # Tmux + dependencies
 brew install tmux
@@ -113,6 +124,10 @@ brew install gnupg
 brew link --overwrite gnupg
 brew install pinentry-mac
 # keybase pgp export -s | gpg --allow-secret-key-import --import -
+
+# Postgres
+brew install postgres
+brew services start postgresql
 
 # JavaScript
 brew install npm

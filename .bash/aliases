@@ -28,6 +28,7 @@ alias ka='k apply -f'
 alias kl='k logs -f'
 alias kp='k get pods'
 alias kd='k get deploy'
+alias kube='kube.sh' # kube.sh wrapper
 
 # Manifold
 alias m='manifold'
@@ -71,43 +72,8 @@ alias grbs='git rebase --skip'
 alias hc='hub compare'
 alias hp='hub pull-request -o'
 
-# Rails
-alias rg='rails g'
-alias rgc='rails g controller'
-alias rgm='rails g model'
-alias rgmi='rails g migration'
-alias rgs='rails g scaffold'
-alias rc='rails console'
-alias rdb='rails dbconsole'
-
-# Bundle
-alias bi='bundle install'
-alias bbi='bundle install --path .bundle/gems --binstubs .bundle/bin'
-alias bu='bundle update'
-alias be='bundle exec'
-
-# Rake
-alias rk='be rake'
-alias rdd='be rake db:drop:all'
-alias rdc='be rake db:create:all'
-alias rdm='be rake db:migrate'
-alias rdr='be rake db:rollback'
-alias rdt='be rake db:test:prepare'
-alias rdrebuild='be rake db:drop:all db:create:all db:migrate db:seed'
-alias rta='rdt && rk'
-
 # Go
-alias gi="glide install"
-alias gg="glide get -u"
-alias gu='rm -rf vendor/ && glide up --force'
 alias gorm='go run main.go'
-
-# Heroku
-alias hk='heroku'
-alias hkp='heroku accounts:set personal'
-alias hkw='heroku accounts:set work'
-alias hkt='heroku logs --tail'
-alias hkc='heroku run rails c'
 
 # Docker
 alias d='docker'
@@ -118,14 +84,8 @@ alias de='docker exec'
 alias dcp='docker-compose'
 alias dcu='docker-compose up'
 
-# Torus
-alias tdcu="torus run -- docker-compose up -d"
-
 # Make
 alias mt='make test'
-
-# iOS Simulator
-alias iossimulator="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
 
 # JS Console
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc'

@@ -4,10 +4,12 @@
 export OS=`uname -s`
 
 # Path
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export PATH=$PATH:/usr/local/sbin
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH="./.bundle/bin:$PATH"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Disable Homebrew analytics gathering
 export HOMEBREW_NO_ANALYTICS=1
