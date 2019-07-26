@@ -33,4 +33,3 @@ for file in ~/.bash/{kube-ps1,prompt}; do
     [ -r "$file" ] && source "$file";
 done;
 unset file;
-export PATH="/Users/jelmersnoeck/Projects/manifold/manifests:$PATH"
