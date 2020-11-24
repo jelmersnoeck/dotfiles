@@ -84,7 +84,7 @@ go get -u github.com/rakyll/gotest
 brew install git
 brew install git-lfs
 brew install hub
-brew install hg
+brew install gh
 
 # Bazel
 brew tap bazelbuild/tap
@@ -103,6 +103,7 @@ brew install packer
 brew install kubectl
 brew install kubectx
 brew install kops
+brew install octant
 
 # Manifold
 brew install manifoldco/brew/manifold-cli

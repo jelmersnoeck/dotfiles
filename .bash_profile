@@ -33,3 +33,6 @@ for file in ~/.bash/{kube-ps1,prompt}; do
     [ -r "$file" ] && source "$file";
 done;
 unset file;
+
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"

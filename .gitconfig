@@ -128,5 +128,5 @@
     gpgsign = true
 [gpg]
 	program = gpg
-[url "/Users/jelmersnoeck/Projects/manifold/manifests/"]
-	insteadOf = https://github.com/manifoldco/kubernetes-manifests
+;[url "/Users/jelmersnoeck/Projects/manifold/manifests/"]
+	;insteadOf = https://github.com/manifoldco/kubernetes-manifests

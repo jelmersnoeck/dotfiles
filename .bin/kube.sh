@@ -42,7 +42,7 @@ fi
 # When we're not running against the development environment, we want to make
 # sure no intrusive actions are taken without consideration. This will check for
 # that.
-if [[ $ENV != "dev" && $CI_BUILD != "true" ]] && [[ $COMMAND != "get" && $COMMAND != "logs" && $COMMAND != "describe" ]]; then
+if [[ $ENV != "dev" && $CI_BUILD != "true" ]] && [[ $COMMAND != "top" && $COMMAND != "get" && $COMMAND != "logs" && $COMMAND != "describe" && $COMMAND != "octant" && $COMMAND != "rollout" && $COMMAND != "port-forward" ]]; then
     echo "You'll be changing a non development environment. Are you sure you want to proceed? (YES/NO)"
     read -p "YES/NO: " answer
     if [ $answer != "YES" ]; then
@@ -56,15 +56,20 @@ normal=$(tput sgr0)
 
 echo "Using kubctl context ${bold}$CONTEXT${normal}"
 
+echo $COMMAND
 case $COMMAND in
     restart)
-        COMMAND="patch deployment"
         ARGS="$ARGS -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}""
+        COMMAND="kubectl --context=$CONTEXT patch deployment $ARGS"
         ;;
-    \?)
+    octant)
+        COMMAND="octant --context=$CONTEXT"
+        ;;
+    *)
         # Valid kubectl command, keep using that
+        COMMAND="kubectl --context=$CONTEXT $COMMAND $ARGS"
         ;;
 esac
 
-echo kubectl --context=$CONTEXT $COMMAND $ARGS
-kubectl --context=$CONTEXT $COMMAND $ARGS
+echo $COMMAND
+exec $COMMAND

@@ -28,3 +28,6 @@ export CDPATH=.:$HOME:$GOPATH/src:$GOPATH/src/golang.org:$GOPATH/src/github.com:
 export GREP_OPTIONS='--color=auto'
 
 export PATH=$PATH:$HOME/.linkerd2/bin
+
+export GOSUMDB=off
+export GOPRIVATE=github.com/manifoldco

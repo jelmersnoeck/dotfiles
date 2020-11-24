@@ -35,19 +35,15 @@ alias m='manifold'
 
 # Git
 alias ga='git aa'
-alias gcom='git checkout master' # See .bash_profile for autocomplete
 alias gcob='git cob'
 alias gc='git ci'
 alias gb='git branch'
 alias gr='git rebase'
 alias grm='git remote'
 alias gf='git fetch'
-alias gfm='git fetch master'
 alias gmt='git merge-to'
 alias gm='git merge'
 alias gp='git push'
-alias gph='git push heroku'
-alias gphm='git push heroku master'
 alias gpu='git pu'
 alias gpum='git pum'
 alias gpo='git po'
@@ -67,10 +63,6 @@ alias gstl='git stash list'
 alias gst='git stash -u'
 alias grbc='git add .; git rebase --continue'
 alias grbs='git rebase --skip'
-
-# GitHub shortcuts
-alias hc='hub compare'
-alias hp='hub pull-request -o'
 
 # Go
 alias gorm='go run main.go'

@@ -206,16 +206,6 @@ function smh {
     cat ~/.bash_history | awk '{CMD[$1]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n15
 }
 
-# Install new version of ruby, update ruby-build as well
-function install-ruby {
-    brew update
-    brew upgrade ruby-build
-    rbenv install $@
-    RBENV_VERSION=$@ gem install bundle
-    RBENV_VERSION=$@ gem install hub
-    RBENV_VERSION=$@ gem install rubocop
-}
-
 # This will set up a new go project according to my project structure I use on
 # my machine.
 # It creates a new project in your GOPATH under your configured github user with
@@ -229,31 +219,6 @@ function new-go-project {
     cd ~/Projects/$name
     git init
     cd ~/Projects
-    dev $name
-}
-
-# new-ruby-project sets up a new ruby project under the projects folder with a
-# given name. It will set up a gemfile, install rspec and initialize it.
-# Afterwards, it will start a tmux session with all the desired panes open.
-function new-ruby-project {
-    name=$@
-    mkdir ~/Projects/$name
-    cd ~/Projects/$name
-    mkdir lib
-    touch lib/.gitkeep
-    gemfile="source 'https://rubygems.org'
-
-group :development, :test do
-  gem 'rspec'
-end
-    "
-    echo "$gemfile" >> Gemfile
-    echo '--color' >> .rspec
-    spaced_name=${name/-/ }
-    echo "# $spaced_name" >> README.md
-    bundle install
-    be rspec --init
-    g init
     dev $name
 }
 
@@ -312,11 +277,6 @@ function import-gpg {
     keybase pgp export -q $1 --secret | gpg --allow-secret-key-import --import
 }
 
-# wh will open the work hour logs for the specified company
-function wh {
-    vi ~/Dropbox/Work/Siphoc\ BVBA/Work\ Logs/$1
-}
-
 # when an argument is given to dps it will grep for that argument in the
 # `docker ps` list, if none is given it will show all results.
 function dps {
@@ -365,15 +325,6 @@ function make_targets {
     make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}' | grep -v Makefile
 }
 
-# Manifold behaviour
-function gdr {
-    rm build/docker/$1/bin/$1 || echo "" && make docker-$1 && docker-compose up -d $1 && clear && dcp logs -f $1
-}
-
-function mdb {
-    dcp exec pg psql postgres://arigato:arigato@localhost:5432/$1
-}
-
 ##################################
 ####### Kubernetes helpers #######
 ##################################
@@ -394,17 +345,24 @@ function kcdra {
     k get deploy -n $namespace | grep -v NAME | cut -d' ' -f1 | xargs -I {} kubectl patch deployment {} -n $namespace -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
 }
 
-# msc will switch the context files for manifold to a local setup
-function msc {
-    rm ~/.manifoldrc || true
-
-    if [[ $1 == "l" ]]; then
-        cp ~/.manifoldrc.local ~/.manifoldrc
+function gcom {
+    if [[ $(git branch | grep main$) ]]; then
+        git checkout main
     else
-        cp ~/.manifoldrc.remote ~/.manifoldrc
+        git checkout master
     fi
 }
 
-function tms {
-    curl https://api.$1.stage.manifold.co/_healthz --resolve "api.$1.stage.manifold.co:443:130.211.234.17" | jq
+function hp {
+    if [[ $(git branch | grep main$) ]]; then
+        gh pr create -a jelmersnoeck -B main $@
+    else
+        gh pr create -a jelmersnoeck -B master $@
+    fi
+}
+
+# wifi-passwords pulls out the password for the given wifi network in plain text
+# from the keychain.
+function wifi-password {
+    security find-generic-password -wa $1
 }
