@@ -130,3 +130,5 @@
 	program = gpg
 ;[url "/Users/jelmersnoeck/Projects/manifold/manifests/"]
 	;insteadOf = https://github.com/manifoldco/kubernetes-manifests
+[submodule]
+	recurse = true
