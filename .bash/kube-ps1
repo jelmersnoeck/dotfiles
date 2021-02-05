@@ -26,6 +26,7 @@ KUBE_PS1_BINARY_DEFAULT="${KUBE_PS1_DEFAULT:-true}"
 KUBE_PS1_BINARY="${KUBE_PS1_BINARY:-"kubectl"}"
 KUBE_PS1_DISABLE_PATH="${HOME}/.kube/kube-ps1/disabled"
 KUBE_PS1_NS_ENABLE="${KUBE_PS1_NS_ENABLE:-true}"
+KUBE_PS1_ENABLE="${KUBE_PS1_ENABLE:-true}"
 KUBE_PS1_UNAME=$(uname)
 KUBE_PS1_LABEL_ENABLE="${KUBE_PS1_LABEL_ENABLE:-true}"
 KUBE_PS1_LABEL_DEFAULT="${KUBE_PS1_LABEL_DEFAULT:-"⎈ "}"
@@ -109,6 +110,10 @@ _kube_ps1_file_newer_than() {
 }
 
 _kube_ps1_load() {
+  if [[ "${KUBE_PS1_ENABLE}" != true ]]; then
+      return
+  fi
+
   # kubectl will read the environment variable $KUBECONFIG
   # otherwise set it to ~/.kube/config
   : "${KUBECONFIG:=$HOME/.kube/config}"

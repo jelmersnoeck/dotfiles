@@ -34,11 +34,8 @@ function open_tmux_session()
     tmux send-keys -t $project "vim" C-m
 
     # database window
-    tmux new-window -n database -t $project
+    tmux new-window -n git -t $project
     tmux send-keys -t $project:2 "cd -P $path/$project" C-m
-    if [ -f $path/$project/dbshell ]; then
-        tmux send-keys -t $project:2 "./dbshell" C-m
-    fi
 
     # shell window
     tmux new-window -n shell -t $project

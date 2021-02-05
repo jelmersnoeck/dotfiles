@@ -1,5 +1,5 @@
 # load the dotfile files.
-for file in ~/.bash/{exports,development,aliases,shell,commands,kube-ps1,prompt,.git-completion.bash}; do
+for file in ~/.bash/{exports,development,aliases,shell,commands,prompt,.git-completion.bash}; do
     [ -r "$file" ] && source "$file";
 done;
 unset file;
@@ -27,6 +27,8 @@ if [[ ! $(ps aux | grep gpg-agent | grep daemon | grep options) ]]; then
 fi
 export PATH="$PATH:./node_modules/"
 
+# disable kube ps1 for now
+export KUBE_PS1_ENABLE=false
 export KUBE_PS1_NS_ENABLE=false
 # Load prompt after all others have been loaded
 for file in ~/.bash/{kube-ps1,prompt}; do
@@ -36,3 +38,5 @@ unset file;
 
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
+
+complete -C /usr/local/bin/nomad nomad

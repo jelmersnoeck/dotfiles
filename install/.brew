@@ -162,6 +162,17 @@ brew install jsonnet
 go get github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb
 
 ####################
+# Cloud things     #
+####################
+
+brew install azure-cli
+brew install awscli
+brew install getsentry/tools/sentry-cli
+
+brew tap hashicorp/security git@github.com:hashicorp/homebrew-security.git
+brew install hashicorp/security/doormat-cli
+
+####################
 # Desktop Apps     #
 ####################
 brew install brew-cask-completion
@@ -186,3 +197,7 @@ brew install --cask ngrok
 brew install --cask divvy
 brew install --cask element
 brew install --cask signal
+brew install --cask oracle-jdk
+brew install --cask 1password-cli
+brew install --cask scaleft
+brew install --cask brave-browser

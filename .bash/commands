@@ -18,6 +18,13 @@ ssh-load-autocomplete()
 # Start the autocomplete when our bash starts
 ssh-load-autocomplete
 
+# Source all shell files in a given directory
+source_dir() {
+  for filename in "$1"/*.sh; do
+    source "$filename"
+  done
+}
+
 # Show the current active Git branch, if any.
 function git-show-branch {
     branch="$(git symbolic-ref -q HEAD 2>/dev/null)";
