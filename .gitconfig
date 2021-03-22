@@ -3,6 +3,17 @@
     email = jelmer@siphoc.com
     signingkey = C8C02ED097D5725E
 
+[includeIf "gitdir:/Users/jelmersnoeck/Projects/hashi/"]
+    path = /Users/jelmersnoeck/Projects/hashi/.gitconfig
+[includeIf "gitdir:/Users/jelmersnoeck/.config/hcp"]
+    path = /Users/jelmersnoeck/Projects/hashi/.gitconfig
+[includeIf "gitdir:/Users/jelmersnoeck/.config/cloud-sre"]
+    path = /Users/jelmersnoeck/Projects/hashi/.gitconfig
+[includeIf "gitdir:/Users/jelmersnoeck/.local/share/hcp"]
+    path = /Users/jelmersnoeck/Projects/hashi/.gitconfig
+[includeIf "gitdir:/Users/jelmersnoeck/.local/share/cloud-sre"]
+    path = /Users/jelmersnoeck/Projects/hashi/.gitconfig
+
 [core]
     repositoryformatversion = 0
     filemode = true
@@ -130,3 +141,6 @@
 	program = gpg
 [submodule]
 	recurse = true
+[pull]
+	ff = only
+    rebase = true

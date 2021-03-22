@@ -171,6 +171,7 @@ brew install getsentry/tools/sentry-cli
 
 brew tap hashicorp/security git@github.com:hashicorp/homebrew-security.git
 brew install hashicorp/security/doormat-cli
+brew install hashicorp/tap/waypoint
 
 ####################
 # Desktop Apps     #
