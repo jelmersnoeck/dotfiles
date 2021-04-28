@@ -48,7 +48,7 @@ alias gpu='git pu'
 alias gpum='git pum'
 alias gpo='git po'
 alias gcl='git clean -df .'
-alias gls='git ll'
+alias gll='git ll'
 alias gl='git l'
 alias gba='git branch -a'
 alias gra='git remote -v'
@@ -63,6 +63,7 @@ alias gstl='git stash list'
 alias gst='git stash -u'
 alias grbc='git add .; git rebase --continue'
 alias grbs='git rebase --skip'
+alias cdr="cd $(git rev-parse --show-toplevel)"
 
 # Go
 alias gorm='go run main.go'

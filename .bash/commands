@@ -373,3 +373,20 @@ function hp {
 function wifi-password {
     security find-generic-password -wa $1
 }
+
+function golink {
+    for f in ~/.goversions/bin/*; do
+        unlink $f
+    done
+    unlink ~/go/src
+    unlink ~/go/pkg
+    unlink ~/.goversions/root
+
+    for f in ~/.goversions/go$1/bin/*; do
+        ln -sf $f ~/.goversions/bin/
+    done
+
+    ln -sf ~/.goversions/go$1 ~/.goversions/root
+    ln -sf ~/.goversions/root/$1/src ~/go/src
+    ln -sf ~/.goversions/root/$1/pkg ~/go/pkg
+}

@@ -21,3 +21,4 @@ benchmarks/*
 # direnv config
 .envrc
 database.sql
+.vscode
