@@ -9,6 +9,8 @@ alias cd='cd -P'
 alias dev='~/.bin/tmux_open_project.sh'
 alias ta='tmux attach'
 alias tnz='tmux new -s zocial'
+alias th='tmux select-layout even-horizontal'
+alias tv='tmux select-layout even-vertical'
 
 # Shortcuts
 alias vc='cd ~/.vimconfig'
@@ -30,8 +32,7 @@ alias kp='k get pods'
 alias kd='k get deploy'
 alias kube='kube.sh' # kube.sh wrapper
 
-# Manifold
-alias m='manifold'
+alias m='make'
 
 # Git
 alias ga='git aa'
@@ -67,6 +68,7 @@ alias cdr="cd $(git rev-parse --show-toplevel)"
 
 # Go
 alias gorm='go run main.go'
+alias gocov='go test -coverprofile coverage.html ./... && go tool cover -html coverage.html'
 
 # Docker
 alias d='docker'
