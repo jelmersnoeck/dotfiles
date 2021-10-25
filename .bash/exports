@@ -30,4 +30,3 @@ export GREP_OPTIONS='--color=auto'
 export PATH=$PATH:$HOME/.linkerd2/bin
 
 export GOSUMDB=off
-export GOPRIVATE=github.com/manifoldco
