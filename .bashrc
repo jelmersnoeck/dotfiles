@@ -29,3 +29,5 @@
 
 # added by travis gem
 [ -f /Users/jelmersnoeck/.travis/travis.sh ] && source /Users/jelmersnoeck/.travis/travis.sh
+
+eval "$(direnv hook bash)"

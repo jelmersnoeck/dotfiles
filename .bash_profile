@@ -1,3 +1,4 @@
+export BASH_SILENCE_DEPRECATION_WARNING=1
 # load the dotfile files.
 for file in ~/.bash/{exports,development,aliases,shell,commands,prompt,.git-completion.bash}; do
     [ -r "$file" ] && source "$file";
@@ -36,7 +37,5 @@ for file in ~/.bash/{kube-ps1,prompt}; do
 done;
 unset file;
 
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
-
 complete -C /usr/local/bin/nomad nomad
+source ~/.profile
