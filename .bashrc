@@ -25,9 +25,5 @@
 #     ssh localhost 'echo "PS1: >$PS1<"'
 #
 
+
 [ -n "$PS1" ] && source ~/.bash_profile;
-
-# added by travis gem
-[ -f /Users/jelmersnoeck/.travis/travis.sh ] && source /Users/jelmersnoeck/.travis/travis.sh
-
-eval "$(direnv hook bash)"

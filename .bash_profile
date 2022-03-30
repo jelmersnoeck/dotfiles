@@ -39,3 +39,6 @@ unset file;
 
 complete -C /usr/local/bin/nomad nomad
 source ~/.profile
+
+# Set up direnv
+eval "$(direnv hook bash)"

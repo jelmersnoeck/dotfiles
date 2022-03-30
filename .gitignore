@@ -19,7 +19,6 @@ Guardfile
 benchmarks/*
 
 # direnv config
-.envrc
 database.sql
 .vscode
 coverage.html
