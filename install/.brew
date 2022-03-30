@@ -50,7 +50,7 @@ fi;
 # Tools            #
 ####################
 
-brew install vim --with-override-system-vi
+brew install vim
 brew install wget --with-iri
 brew install grep
 brew install ag
