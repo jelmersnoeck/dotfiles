@@ -22,3 +22,5 @@ benchmarks/*
 database.sql
 .vscode
 coverage.html
+
+cdk.context.json

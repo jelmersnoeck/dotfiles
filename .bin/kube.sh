@@ -62,6 +62,10 @@ case $COMMAND in
         ARGS="$ARGS -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}""
         COMMAND="kubectl --context=$CONTEXT patch deployment $ARGS"
         ;;
+    dsrestart)
+        ARGS="$ARGS -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}""
+        COMMAND="kubectl --context=$CONTEXT patch daemonset $ARGS"
+        ;;
     octant)
         COMMAND="octant --context=$CONTEXT"
         ;;

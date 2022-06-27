@@ -353,7 +353,9 @@ function kcdra {
 }
 
 function gcom {
-    if [[ $(git branch | grep main$) ]]; then
+    if [[ $(git branch | grep mainline$) ]]; then
+        git checkout mainline
+    elif [[ $(git branch | grep main$) ]]; then
         git checkout main
     else
         git checkout master

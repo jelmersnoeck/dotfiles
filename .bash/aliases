@@ -26,6 +26,7 @@ alias ap='ansible-playbook'
 
 # Kubernetes
 alias k='kubectl'
+source <(kubectl completion bash)
 alias ka='k apply -f'
 alias kl='k logs -f'
 alias kp='k get pods'
