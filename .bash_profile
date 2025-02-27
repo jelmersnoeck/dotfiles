@@ -5,7 +5,7 @@ fi
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 # load the dotfile files.
-for file in ~/.bash/{exports,development,aliases,shell,commands,prompt,.git-completion.bash}; do
+for file in ~/.bash/{exports,development,aliases,shell,commands,.git-completion.bash}; do
     [ -r "$file" ] && source "$file";
 done;
 unset file;
@@ -14,10 +14,9 @@ unset file;
 __git_complete gco _git_checkout
 
 # Load machine specific functionality
-if [ ! -f ~/.bash_extra ]; then
-    touch ~/.bash_extra
+if [ -f ~/.bash_extra ]; then
+    source ~/.bash_extra
 fi
-source ~/.bash_extra
 
 # Don't ask for GPG passphrase every time.
 # https://github.com/pstadler/keybase-gpg-github
@@ -33,15 +32,8 @@ if [[ ! $(ps aux | grep gpg-agent | grep daemon | grep options) ]]; then
 fi
 export PATH="$PATH:./node_modules/"
 
-# disable kube ps1 for now
-export KUBE_PS1_ENABLE=false
-export KUBE_PS1_NS_ENABLE=false
 # Load prompt after all others have been loaded
-for file in ~/.bash/{kube-ps1,prompt}; do
-    [ -r "$file" ] && source "$file";
-done;
-unset file;
-
+source ~/.bash/prompt
 source ~/.profile
 
 # Set up direnv

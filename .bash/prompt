@@ -6,15 +6,16 @@ type -t git > /dev/null \
     || __prompt_vcs_string='';
 
 # set our prompt
-export PS1="${PS1_PREFIX}${FG_BLUE}\h:${FG_YELLOW}\W${FG_RED}$__prompt_vcs_string\e[m\n";
+if [ $WORKBOOK != true ]; then
+    export PS1_PREFIX="${PS1_PREFIX}${FG_BLUE}\u${FG_WHITE} @ ${FG_GREEN}\h ${FG_WHITE}| "
+fi
+export PS1="${PS1_PREFIX}${FG_YELLOW}\W$__prompt_vcs_string\e[m\n";
 
 function git-branch-prompt {
-    if [ -d ".git" ]; then
-        local branch=$(git-show-branch);
-        if [ "${branch}" != "" ]
-        then
-            echo ":${branch}:$(git-changes)";
-        fi
+    local branch=$(git-show-branch);
+    if [ "${branch}" != "" ]
+    then
+        echo "${FG_WHITE}$(tput setaf 61)(${branch}) $(git-changes)";
     fi
 }
 
