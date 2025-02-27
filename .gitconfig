@@ -1,10 +1,19 @@
 [user]
     name = Jelmer Snoeck
     email = jelmer@siphoc.com
-    signingkey = C8C02ED097D5725E
 
-[includeIf "gitdir:/Volumes/workplace/"]
-    path = /Volumes/workplace/.gitconfig
+[github]
+    user = jelmersnoeck
+
+# Work and personal computers have different signing keys etc. Lets make it
+# possible for custom configuration to be loaded
+[include]
+    path = /Users/jelmersnoeck/.gitconfig_extra
+
+# This is a sample config of what lives in .gitconfig_extra
+# [user]
+#     email = jelmer@workemail.com
+#     signingkey = gpgkey
 
 [core]
     repositoryformatversion = 0
@@ -19,6 +28,15 @@
     # Global ignore file
     excludesfile = ~/.gitignore
 
+	# Treat spaces before tabs and all kinds of trailing whitespace as an error.
+	# [default] trailing-space: looks for spaces at the end of a line
+	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+	# Make `git rebase` safer on macOS.
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+	trustctime = false
+
 [merge]
     tool = vimdiff
 
@@ -26,13 +44,22 @@
     # message.
     log = true
 
-[github]
-    user = jelmersnoeck
-
 # URL overwrites
 [url "git@github.com:"]
-    insteadOf = https://github.com/
-    insteadOf = gh
+	insteadOf = "gh:"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+	insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+	insteadOf = "gst:"
+	pushInsteadOf = "gist:"
+	pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+	insteadOf = "gist:"
 
 [push]
     # Make "git push" or "git push <remote>" only push the current branch to
@@ -125,15 +152,15 @@
     templatedir = ~/.git_template
 	defaultBranch = main
 
-[heroku]
-    account = personal
-
 [commit]
     gpgsign = true
+
 [gpg]
     program = gpg
+
 [submodule]
 	recurse = true
+
 [pull]
 	ff = only
     rebase = true

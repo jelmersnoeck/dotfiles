@@ -9,10 +9,12 @@ type -t git > /dev/null \
 export PS1="${PS1_PREFIX}${FG_BLUE}\h:${FG_YELLOW}\W${FG_RED}$__prompt_vcs_string\e[m\n";
 
 function git-branch-prompt {
-    local branch=$(git-show-branch);
-    if [ "${branch}" != "" ]
-    then
-        echo ":${branch}:$(git-changes)";
+    if [ -d ".git" ]; then
+        local branch=$(git-show-branch);
+        if [ "${branch}" != "" ]
+        then
+            echo ":${branch}:$(git-changes)";
+        fi
     fi
 }
 

@@ -65,7 +65,6 @@ alias gstl='git stash list'
 alias gst='git stash -u'
 alias grbc='git add .; git rebase --continue'
 alias grbs='git rebase --skip'
-alias cdr="cd $(git rev-parse --show-toplevel)"
 
 # Go
 alias gorm='go run main.go'
@@ -93,13 +92,13 @@ alias bctags='ctags -R --exclude=.svn --exclude=.git --exclude=log *'
 alias resource='source ~/.bashrc'
 
 # Specific OS aliases
-if [[ $OS == 'Darwin' ]]
+if [[ `uname` == 'Darwin' ]]
 then
 	alias ls='ls -G'
 	alias lsa='ls -alGh'
 fi
 
-if [[ $OS == 'Linux' ]]
+if [[ `uname` == 'Linux' ]]
 then
 	alias lsa='ls -hal --color=tty'
 fi

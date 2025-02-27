@@ -1,3 +1,8 @@
+# Load Homebrew if we're on a Mac
+if [[ `uname` == 'Darwin' ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 export BASH_SILENCE_DEPRECATION_WARNING=1
 # load the dotfile files.
 for file in ~/.bash/{exports,development,aliases,shell,commands,prompt,.git-completion.bash}; do
@@ -37,7 +42,6 @@ for file in ~/.bash/{kube-ps1,prompt}; do
 done;
 unset file;
 
-complete -C /usr/local/bin/nomad nomad
 source ~/.profile
 
 # Set up direnv

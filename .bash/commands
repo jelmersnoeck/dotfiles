@@ -213,22 +213,6 @@ function smh {
     cat ~/.bash_history | awk '{CMD[$1]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n15
 }
 
-# This will set up a new go project according to my project structure I use on
-# my machine.
-# It creates a new project in your GOPATH under your configured github user with
-# the given project name. It will then symlink it to the ~/Project directory
-# under the specified name and set up git.
-# Afterwards, it will start a tmux session with all the desired panes open.
-function new-go-project {
-    name=$@
-    mkdir -p $GOPATH/src/github.com/$(git config github.user)/$name
-    ln -sf $GOPATH/src/github.com/$(git config github.user)/$name ~/Projects/$name
-    cd ~/Projects/$name
-    git init
-    cd ~/Projects
-    dev $name
-}
-
 # Get a git diff on $1 (master..feature-branch) and exclude folder $2 from the
 # diff.
 gde() {
@@ -250,22 +234,6 @@ aws-list-instances() {
     aws ec2 describe-instances --filters "Name=tag:Name,Values=*$1*" --query 'Reservations[].Instances[].[PrivateIpAddress,InstanceId,Tags[?Key==`Name`].Value[]]' --output text
 }
 
-# `gt` runs the tests for all subpackages of your main package except for
-# example and vendored packages.
-function gt {
-    go test -race -bench . -benchmem -run . -v $(go list ./... | grep -v '\/vendor\/\|\/examples\/')
-}
-
-# `gtp` runs the tests for a specific package
-function gtp {
-    go test -race -bench=. -benchmem -run . -v $1
-}
-
-# `gtr` runs all the tests that match a specific regex for all the subpackages.
-function gtr {
-    go test -race -bench . -benchmem -run $1 -v $(go list ./... | grep -v '\/vendor\/\|\/examples\/')
-}
-
 # sync-disks will sync hard drives with rsync, this is used for backing up one
 # hard drive to another with the same naming convention.
 function sync-disks {
@@ -276,12 +244,6 @@ function sync-disks {
 # hard drive to another with the same naming convention.
 function dry-sync-disks {
     rsync --dry-run -avr --times --delete --exclude=/\.Spotlight/ --exclude=/\.Trashes/ /Volumes/JS-$1/ /Volumes/JS-$1-Backup/
-}
-
-# this will import the gpg keys from keybase and set them up in our gpg agent
-function import-gpg {
-    keybase pgp export -q $1 | gpg --import
-    keybase pgp export -q $1 --secret | gpg --allow-secret-key-import --import
 }
 
 # when an argument is given to dps it will grep for that argument in the
@@ -374,21 +336,4 @@ function hp {
 # from the keychain.
 function wifi-password {
     security find-generic-password -wa $1
-}
-
-function golink {
-    for f in ~/.goversions/bin/*; do
-        unlink $f
-    done
-    unlink ~/go/src
-    unlink ~/go/pkg
-    unlink ~/.goversions/root
-
-    for f in ~/.goversions/go$1/bin/*; do
-        ln -sf $f ~/.goversions/bin/
-    done
-
-    ln -sf ~/.goversions/go$1 ~/.goversions/root
-    ln -sf ~/.goversions/root/$1/src ~/go/src
-    ln -sf ~/.goversions/root/$1/pkg ~/go/pkg
 }

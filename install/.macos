@@ -1,5 +1,7 @@
 # !/bin/bash
 
+# For more details or options, look at https://macos-defaults.com/
+
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
@@ -16,27 +18,42 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
-# Set sidebar icon size to small
-sudo defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
+# Dock
+defaults write com.apple.dock "orientation" -string "left"
+defaults write com.apple.dock "tilesize" -int "40"
+defaults write com.apple.dock "magnification" -int "1"
+defaults write com.apple.dock "largesize" -int "80"
+defaults write com.apple.dock "autohide" -bool "true"
+defaults write com.apple.dock "autohide-time-modifier" -float "0"
+defaults write com.apple.dock "show-recents" -bool "false"
+defaults write com.apple.dock "static-only" -bool "true"
+killall Dock
 
-# Set the dock on the left side
-sudo defaults write com.apple.Dock orientation -string LEFT
+# Finder
+defaults write com.apple.finder "ShowPathbar" -bool "true"
+defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true"
+defaults write com.apple.finder "AppleShowAllFiles" -bool "true"
+defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
+defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
+killall Finder
+
+# Keyboard
+defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "false"
+defaults write com.apple.HIToolbox AppleFnUsageType -int "2"
 
 # Disable Guest User
 sudo defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool NO
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool NO
+
+# Misc
+# Disable Apple Intelligence
+defaults write com.apple.CloudSubscriptionFeatures.optIn "545129924" -bool "false"
 
 #################
 # User Input
 ################
 
 # Set a blazingly fast keyboard repeat rate
-sudo defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
-sudo defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
-
-# Kill affected applications
-for app in "Activity Monitor" \
-	"Dock" \
-	"Finder"; do
-	killall "${app}" &> /dev/null
-done
+defaults write -g InitialKeyRepeat -int 15
+defaults write -g KeyRepeat -int 2
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
