@@ -326,9 +326,9 @@ function gcom {
 
 function hp {
     if [[ $(git branch | grep main$) ]]; then
-        gh pr create --fill -a jelmersnoeck -B main $@
+        gh pr create --fill -a jelmersnoeck -d -B main $@
     else
-        gh pr create --fill -a jelmersnoeck -B master $@
+        gh pr create --fill -a jelmersnoeck -d -B master $@
     fi
 }
 

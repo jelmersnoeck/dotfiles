@@ -30,6 +30,7 @@ if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
     chsh -s /usr/local/bin/bash;
 fi;
 
+brew install ghostty
 brew install vim
 brew install wget
 brew install grep

@@ -1,0 +1,7 @@
+# Ghostty Configuration
+
+# Shell
+command = /opt/homebrew/bin/bash
+
+# Font
+font-size = 16

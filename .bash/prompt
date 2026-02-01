@@ -4,12 +4,17 @@
 type -t git > /dev/null \
     && __prompt_vcs_string='$(git-branch-prompt)' \
     || __prompt_vcs_string='';
+__prompt_kubectl='$(kubectl-context)';
 
 # set our prompt
 if [ $WORKBOOK != true ]; then
     export PS1_PREFIX="${PS1_PREFIX}${FG_BLUE}\u${FG_WHITE} @ ${FG_GREEN}\h ${FG_WHITE}| "
 fi
-export PS1="${PS1_PREFIX}${FG_YELLOW}\W$__prompt_vcs_string\e[m\n";
+export PS1="${PS1_PREFIX}${FG_YELLOW}\W${FG_BLUE}$__prompt_kubectl$__prompt_vcs_string\e\e[m\n";
+
+function kubectl-context {
+    echo "[☸️ $(kubectl config current-context)]"
+}
 
 function git-branch-prompt {
     local branch=$(git-show-branch);

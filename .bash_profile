@@ -38,3 +38,5 @@ source ~/.profile
 
 # Set up direnv
 eval "$(direnv hook bash)"
+
+. "$HOME/.local/bin/env"
