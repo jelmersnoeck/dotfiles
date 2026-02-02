@@ -6,7 +6,6 @@ alias dirc='ssh -D 2001 -t irssi screen -dr'
 alias cd='cd -P'
 
 # Tmux aliasing
-alias dev='~/.bin/tmux_open_project.sh'
 alias ta='tmux attach'
 alias tnz='tmux new -s zocial'
 alias th='tmux select-layout even-horizontal'

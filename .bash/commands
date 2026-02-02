@@ -337,3 +337,46 @@ function hp {
 function wifi-password {
     security find-generic-password -wa $1
 }
+
+# dev opens a folder in a tmux session named after the folder.
+# If session exists, attach/switch to it.
+# For new sessions: creates a layout with vim (2/3 width) and claude (1/3 width).
+function dev {
+    local dir="${1:-.}"
+    local path="$(cd "$dir" >/dev/null && pwd)"
+    local name="$(basename "$path")"
+
+    if tmux has-session -t "$name" 2>/dev/null; then
+        # Session exists - attach or switch
+        if [ -n "$TMUX" ]; then
+            tmux switch-client -t "$name"
+        else
+            tmux attach -t "$name"
+        fi
+    else
+        # Create new session with layout
+        tmux new-session -d -s "$name" -c "$path"
+
+        # Set session-level env var so new panes/windows open in project root
+        tmux set-environment -t "$name" TMUX_DEV_ROOT "$path"
+
+        # Start vim in the first pane
+        tmux send-keys -t "$name" "cd '$path' && vim ." Enter
+
+        # Split horizontally, new pane is 33% width (1/3)
+        tmux split-window -h -t "$name" -c "$path" -l 33%
+
+        # Run pi in the right pane
+        tmux send-keys -t "$name" "cd '$path' && pi" Enter
+
+        # Focus back on vim pane (left)
+        tmux select-pane -t "$name":1.1
+
+        # Attach or switch
+        if [ -n "$TMUX" ]; then
+            tmux switch-client -t "$name"
+        else
+            tmux attach -t "$name"
+        fi
+    fi
+}

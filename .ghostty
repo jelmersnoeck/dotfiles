@@ -5,3 +5,8 @@ command = /opt/homebrew/bin/bash
 
 # Font
 font-size = 16
+
+# Clipboard
+copy-on-select = clipboard
+clipboard-read = allow
+clipboard-write = allow
