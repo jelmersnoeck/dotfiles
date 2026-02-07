@@ -28,8 +28,8 @@
       "Read(**/.env*)"
     ]
   },
-  "model": "opus",
   "includeCoAuthoredBy": false,
+  "model": "opus[1m]",
   "enabledPlugins": {
     "code-review@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
