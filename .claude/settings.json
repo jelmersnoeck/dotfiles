@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Skill(keycard:*)",
+      "Bash(ls:*)",
+      "Bash(tree:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(gh repo view:*)",
+      "Bash(gh api:*)",
+      "Bash(gh pr diff:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(tmux *)",
+      "WebSearch",
+      "WebFetch",
+      "Edit",
+      "Read",
+      "Write",
+      "Update"
+    ],
+    "deny": [
+      "Read(.env*)",
+      "Read(**/.env*)"
+    ]
+  },
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "teammateMode": "tmux",
+  "model": "opus",
+  "enabledPlugins": {
+    "code-review@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "golang-standards@keycard-claude-plugins": false,
+    "keycard@keycard": true
+  },
+  "feedbackSurveyState": {
+    "lastShownTime": 1754076309159
+  }
+}

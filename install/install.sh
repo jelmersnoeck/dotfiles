@@ -5,7 +5,7 @@ commonFiles=();
 for sourceFile in .*; do
 
     # Exclude some files.
-    if [[ "$sourceFile" == "install.sh" ]] || [[ "$sourceFile" == "remote-install" ]] || [[ "$sourceFile" == "README.md" ]] || [[ "$sourceFile" == "." ]] || [[ "$sourceFile" == ".." ]] || [[ "$sourceFile" == ".git" ]]; then
+    if [[ "$sourceFile" == "install.sh" ]] || [[ "$sourceFile" == "remote-install" ]] || [[ "$sourceFile" == "README.md" ]] || [[ "$sourceFile" == "." ]] || [[ "$sourceFile" == ".." ]] || [[ "$sourceFile" == ".git" ]] || [[ "$sourceFile" == ".claude" ]]; then
         continue;
     fi;
 
@@ -79,7 +79,7 @@ done;
 for sourceFile in .*; do
 
     # Exclude some files.
-    if [[ "$sourceFile" == "install.sh" ]] || [[ "$sourceFile" == "remote-install" ]] || [[ "$sourceFile" == "README.md" ]] || [[ "$sourceFile" == "." ]] || [[ "$sourceFile" == ".." ]] || [[ "$sourceFile" == ".git" ]]; then
+    if [[ "$sourceFile" == "install.sh" ]] || [[ "$sourceFile" == "remote-install" ]] || [[ "$sourceFile" == "README.md" ]] || [[ "$sourceFile" == "." ]] || [[ "$sourceFile" == ".." ]] || [[ "$sourceFile" == ".git" ]] || [[ "$sourceFile" == ".claude" ]]; then
         continue;
     fi;
 
@@ -95,5 +95,13 @@ if [[ ! -d $HOME/.gnupg ]]; then
     ln -sf $PWD/.gnupg/gpg.conf $HOME/.gnupg/gpg.conf
     ln -sf $PWD/.gnupg/gpg-agent.conf $HOME/.gnupg/gpg-agent.conf
 fi
+
+# Claude config — symlink tracked files, leave runtime data alone.
+[[ ! -d "$HOME/.claude" ]] && mkdir "$HOME/.claude"
+ln -sf "$PWD/.claude/settings.json" "$HOME/.claude/settings.json"
+ln -sf "$PWD/.claude/settings.local.json" "$HOME/.claude/settings.local.json"
+
+# CLAUDE.md lives at ~/ (not dot-prefixed, so the .* glob misses it).
+ln -sf "$PWD/CLAUDE.md" "$HOME/CLAUDE.md"
 
 echo "Done.";
