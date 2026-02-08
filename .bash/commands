@@ -343,7 +343,7 @@ function wifi-password {
 # For new sessions: creates an "editor" window with:
 #   - Left pane (2/3 width): vim
 #   - Right side split horizontally:
-#     - Top (75% height): pi
+#     - Top (75% height): clolo
 #     - Bottom (25% height): shell
 function dev {
     local dir="${1:-.}"
@@ -370,8 +370,8 @@ function dev {
         # Split horizontally: right pane is 1/3 width (33%)
         tmux split-window -h -t "$name:editor" -c "$path" -l 33%
 
-        # Right pane now active; start pi here (will be top-right, 75% height)
-        tmux send-keys -t "$name:editor" "cd '$path' && pi" Enter
+        # Right pane now active; start clolo here (will be top-right, 75% height)
+        tmux send-keys -t "$name:editor" "cd '$path' && clolo" Enter
 
         # Split the right pane vertically: bottom is 15% height (shell)
         tmux split-window -v -t "$name:editor" -c "$path" -l 15%
