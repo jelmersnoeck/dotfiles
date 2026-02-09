@@ -3,6 +3,7 @@
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
+  "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
       "Skill(keycard:*)",
@@ -28,7 +29,6 @@
       "Read(**/.env*)"
     ]
   },
-  "includeCoAuthoredBy": false,
   "model": "opus[1m]",
   "enabledPlugins": {
     "code-review@claude-plugins-official": true,
@@ -55,7 +55,8 @@
     "vercel@claude-plugins-official": true,
     "claude-code-setup@claude-plugins-official": true,
     "learning-output-style@claude-plugins-official": true,
-    "playground@claude-plugins-official": true
+    "playground@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
   },
   "teammateMode": "tmux",
   "feedbackSurveyState": {
