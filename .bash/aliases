@@ -80,8 +80,8 @@ alias dcu='docker compose up'
 alias dcl='docker system prune -af && docker image prune -af && docker system prune -af --volumes && docker system df && docker volume prune -f'
 
 # AI
-alias cuclaude='claude --allowedTools mcp__container-use__environment_checkpoint,mcp__container-use__environment_create,mcp__container-use__environment_add_service,mcp__container-use__environment_file_delete,mcp__container-use__environment_file_list,mcp__container-use__environment_file_read,mcp__container-use__environment_file_write,mcp__container-use__environment_open,mcp__container-use__environment_run_cmd,mcp__container-use__environment_update01'
 alias clolo='claude --dangerously-skip-permissions'
+alias cc='clolo'
 
 # Make
 alias mt='make test'
@@ -96,6 +96,8 @@ alias bctags='ctags -R --exclude=.svn --exclude=.git --exclude=log *'
 alias resource='source ~/.bashrc'
 
 # Specific OS aliases
+alias grep='grep --color=auto'
+
 if [[ `uname` == 'Darwin' ]]
 then
 	alias ls='ls -G'

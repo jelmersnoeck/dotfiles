@@ -51,6 +51,10 @@ brew install gnupg
 brew link --overwrite gnupg
 brew install pinentry-mac
 
+brew install --cask orbstack
+brew install --cask rectangle
+brew install --cask divvy
+
 # Vim config
 if [ ! -d "$HOME/.vimconfig" ]; then
     git clone https://github.com/jelmersnoeck/vimconfig.git ~/.vimconfig && cd ~/.vimconfig && sh ./install.sh && cd -
