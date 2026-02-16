@@ -50,6 +50,8 @@ brew install tree
 brew install gnupg
 brew link --overwrite gnupg
 brew install pinentry-mac
+brew install asdf
+brew install rust
 
 brew install --cask orbstack
 brew install --cask rectangle
