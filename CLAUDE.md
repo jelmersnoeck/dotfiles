@@ -146,6 +146,7 @@ commands there.
 
 ## Version Control
 
+- **Never commit on main**. All work goes on a feature branch (`jelmer/<description>`). If on main, create a branch before committing.
 - Branch/bookmark names: prepend with `jelmer/`
 - Safe by default: `status/diff/log`
 - Branch changes require user consent

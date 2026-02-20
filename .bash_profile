@@ -31,3 +31,7 @@ eval "$(direnv hook bash)"
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init.bash 2>/dev/null || :
+export DOCKER_HOST="unix:///Users/jelmersnoeck/.orbstack/run/docker.sock"
+
+# Added by swiftly
+. "/Users/jelmersnoeck/.swiftly/env.sh"

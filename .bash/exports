@@ -27,4 +27,6 @@ export CDPATH=.:$HOME:$GOPATH/src:$GOPATH/src/golang.org:$GOPATH/src/github.com:
 
 export PATH=$PATH:$HOME/.linkerd2/bin
 
+export GOPRIVATE=github.com/keycardlabs/*
+export GONOSUMDB=github.com/keycardlabs/*
 export GOSUMDB=off
